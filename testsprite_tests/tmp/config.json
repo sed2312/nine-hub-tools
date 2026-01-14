@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:8080",
+  "executionArgs": {
+    "projectName": "nineproohub_export",
+    "projectPath": "c:\\Users\\Seddik\\Downloads\\Nouveau dossier\\nineproohub_export",
+    "testIds": [],
+    "additionalInstruction": "",
+    "envs": {
+      "API_KEY": "sk-user-zDkewebD4YBegTAxjmaAj3GoHd9m2ANr1OSJs6d-xXJbBeQp9r0meoRL4x0wpU4xcy1EOdnrZJo7t255PvXtqoxyKU-Ajk9ZQ7moqyi0rAu62AY7SFFulu85B-yYTzAn8R4"
+    }
+  },
+  "proxy": "http://ffc63c88-0fba-43e8-8942-7355981983c8:iJeZtVMCdmZOXE0GXsITsIhQMV7icJpT@tun.testsprite.com:8080"
+}

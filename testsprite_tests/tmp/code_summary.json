@@ -1,0 +1,148 @@
+{
+    "tech_stack": [
+        "TypeScript",
+        "React 18",
+        "Vite",
+        "Tailwind CSS",
+        "Radix UI",
+        "shadcn/ui",
+        "Framer Motion",
+        "Supabase",
+        "TanStack Query",
+        "React Router v6"
+    ],
+    "features": [
+        {
+            "name": "Glassmorphism Generator",
+            "description": "Create stunning frosted glass effects with customizable blur, opacity, and border settings",
+            "files": [
+                "src/pages/tools/GlassTool.tsx"
+            ]
+        },
+        {
+            "name": "Color Palette Generator",
+            "description": "Generate harmonious color schemes with multiple palette options and export capabilities",
+            "files": [
+                "src/pages/tools/PaletteTool.tsx",
+                "src/components/palette"
+            ]
+        },
+        {
+            "name": "Gradient Text Generator",
+            "description": "Design eye-catching text gradients with color customization and CSS export",
+            "files": [
+                "src/pages/tools/GradientTextTool.tsx"
+            ]
+        },
+        {
+            "name": "Box Shadow Generator",
+            "description": "Perfect shadows for UI elements with multiple shadow layers and customization",
+            "files": [
+                "src/pages/tools/ShadowTool.tsx"
+            ]
+        },
+        {
+            "name": "Blob Generator",
+            "description": "Create organic shapes for modern designs with SVG export capabilities",
+            "files": [
+                "src/pages/tools/BlobTool.tsx"
+            ]
+        },
+        {
+            "name": "CSS Grid Generator",
+            "description": "Visual grid layout builder with gap, columns, and row customization",
+            "files": [
+                "src/pages/tools/GridTool.tsx"
+            ]
+        },
+        {
+            "name": "Contrast Checker",
+            "description": "WCAG compliance testing tool for accessibility with contrast ratio calculations",
+            "files": [
+                "src/pages/tools/ContrastTool.tsx"
+            ]
+        },
+        {
+            "name": "Meta Tags Generator",
+            "description": "SEO-optimized meta tags generator for social media and search engines",
+            "files": [
+                "src/pages/tools/MetaTool.tsx"
+            ]
+        },
+        {
+            "name": "AI Prompt Generator",
+            "description": "Enhance AI assistant prompts with structured templates and best practices",
+            "files": [
+                "src/pages/tools/PromptTool.tsx"
+            ]
+        },
+        {
+            "name": "Homepage",
+            "description": "Landing page with tool showcase, features, pricing, and navigation",
+            "files": [
+                "src/pages/Index.tsx",
+                "src/components/hub"
+            ]
+        },
+        {
+            "name": "Command Palette",
+            "description": "Quick navigation system using Cmd/Ctrl+K keyboard shortcut",
+            "files": [
+                "src/components/CommandPalette.tsx"
+            ]
+        },
+        {
+            "name": "Theme Management",
+            "description": "Dark/Light mode support with automatic theme switching",
+            "files": [
+                "src/components/ThemeProvider.tsx",
+                "src/components/ThemeToggle.tsx"
+            ]
+        },
+        {
+            "name": "Favorites System",
+            "description": "Star and bookmark favorite tools for quick access",
+            "files": [
+                "src/hooks"
+            ]
+        },
+        {
+            "name": "Presets Management",
+            "description": "Save and load tool configurations for reuse",
+            "files": [
+                "src/hooks",
+                "src/lib/storage.ts"
+            ]
+        },
+        {
+            "name": "Export History",
+            "description": "Track and manage all exported tool outputs",
+            "files": [
+                "src/hooks",
+                "src/lib/storage.ts"
+            ]
+        },
+        {
+            "name": "SEO Components",
+            "description": "Complete SEO optimization with meta tags, sitemap, and structured data",
+            "files": [
+                "src/components/SEOHead.tsx",
+                "src/lib/seo.ts"
+            ]
+        },
+        {
+            "name": "Subscription System",
+            "description": "User subscription management with Supabase backend",
+            "files": [
+                "src/contexts/SubscriptionContext.tsx"
+            ]
+        },
+        {
+            "name": "Responsive Layout",
+            "description": "Mobile-first responsive design that works on all device sizes",
+            "files": [
+                "src/components/layout"
+            ]
+        }
+    ]
+}

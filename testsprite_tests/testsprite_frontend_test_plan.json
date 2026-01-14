@@ -1,0 +1,549 @@
+[
+  {
+    "id": "TC001",
+    "title": "Validate Glassmorphism Generator with typical input",
+    "description": "Verify that the Glassmorphism Generator correctly creates frosted glass effects with user-provided blur, opacity, and border settings, including live preview and CSS export.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the Glassmorphism Generator tool page"
+      },
+      {
+        "type": "action",
+        "description": "Input valid blur, opacity, and border values"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the live preview updates to reflect the settings"
+      },
+      {
+        "type": "action",
+        "description": "Export the generated CSS"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the exported CSS matches the input parameters"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Glassmorphism Generator handles edge blur values",
+    "description": "Test the Glassmorphism Generator with minimum and maximum blur values to verify stability and correct visual output.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Set blur value to minimum allowed"
+      },
+      {
+        "type": "assertion",
+        "description": "Check live preview does not break and correctly reflects minimal blur"
+      },
+      {
+        "type": "action",
+        "description": "Set blur value to maximum allowed"
+      },
+      {
+        "type": "assertion",
+        "description": "Check live preview updates without performance issues and displays strong blur"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Color Palette Generator creates harmonious palettes",
+    "description": "Verify color palette generation produces harmonious color schemes with multiple palette options and supports export.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Color Palette Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Generate palettes using different algorithm options"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure the palettes displayed contain harmonious colors"
+      },
+      {
+        "type": "action",
+        "description": "Export the current palette"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that export data matches the displayed colors"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Color Palette Generator handles empty or invalid inputs",
+    "description": "Test system response when empty or invalid inputs are provided to palette generation and ensure error handling or default behaviors occur.",
+    "category": "error handling",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Attempt to generate palette with invalid color codes or empty inputs"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm appropriate error messages or fallback palettes are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Gradient Text Generator creates customized gradients",
+    "description": "Verify gradient text generator allows customization of colors and exports correct CSS gradient definitions.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access Gradient Text Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Customize start and end colors for the gradient text"
+      },
+      {
+        "type": "assertion",
+        "description": "Check live preview text updates to reflect chosen gradient"
+      },
+      {
+        "type": "action",
+        "description": "Export the CSS for the gradient text"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify exported CSS defines correct gradient background"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Box Shadow Generator supports multiple layers",
+    "description": "Test Box Shadow Generator functionality including adding, editing, and removing multiple shadow layers with individual customization.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open Box Shadow Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Add multiple shadow layers with varying offsets, blur, spread, and colors"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify preview updates correctly with all layers applied"
+      },
+      {
+        "type": "action",
+        "description": "Edit shadow properties and remove a shadow layer"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm preview updates reflect edits and removal"
+      },
+      {
+        "type": "action",
+        "description": "Export final CSS box-shadow property"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that exported CSS matches the applied shadow layers"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Blob Generator produces valid SVG shapes",
+    "description": "Ensure the Blob Generator creates organic shapes customized by user inputs and allows export of valid SVG files.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to Blob Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Adjust parameters such as complexity, size, and randomness"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify shape preview updates accordingly"
+      },
+      {
+        "type": "action",
+        "description": "Export blob as SVG file"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm that exported SVG is well-formed and renders correctly"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "CSS Grid Generator creates layouts with valid grid settings",
+    "description": "Validate that CSS Grid Generator accepts gap, column count, and row count inputs to generate valid CSS grid layouts and previews the result.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open CSS Grid Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Input various values for gap, columns, and rows"
+      },
+      {
+        "type": "assertion",
+        "description": "Check the live grid preview updates correctly"
+      },
+      {
+        "type": "action",
+        "description": "Export generated CSS grid code"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify exported CSS matches input configurations"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Contrast Checker accurately calculates contrast ratios",
+    "description": "Confirm the Contrast Checker computes WCAG compliance levels and contrast ratio between foreground and background colors correctly.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access Contrast Checker tool"
+      },
+      {
+        "type": "action",
+        "description": "Input multiple foreground and background color pairs including edge cases"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify displayed contrast ratio matches expected values"
+      },
+      {
+        "type": "assertion",
+        "description": "Check compliance status for WCAG AA and AAA criteria is accurate"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Meta Tags Generator outputs SEO-optimized meta tags",
+    "description": "Test that Meta Tags Generator creates correct meta tags for SEO and social media and exports valid HTML snippets.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Open Meta Tags Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Input webpage title, description, keywords, social media info"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify generated meta tags reflect user inputs correctly"
+      },
+      {
+        "type": "action",
+        "description": "Export meta tags as HTML"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm exported snippet contains valid, SEO-optimized tags"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "AI Prompt Generator creates structured, customizable prompts",
+    "description": "Ensure AI Prompt Generator lets users build AI assistant prompts using templates with customizable fields and exports them correctly.",
+    "category": "functional",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access AI Prompt Generator tool"
+      },
+      {
+        "type": "action",
+        "description": "Select different prompt templates and fill in customizable fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the constructed prompt text updates as per inputs"
+      },
+      {
+        "type": "action",
+        "description": "Export the prompt text"
+      },
+      {
+        "type": "assertion",
+        "description": "Check the exported prompt matches the constructed prompt"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Favorites system persists starred tools",
+    "description": "Test that users can star favorite tools and that these favorites are persisted correctly and restored upon page reload.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to tools list"
+      },
+      {
+        "type": "action",
+        "description": "Star multiple tools as favorites"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that favorited tools appear in favorites list"
+      },
+      {
+        "type": "action",
+        "description": "Reload the application or page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify favorites list is preserved and shows previously starred tools"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Presets management allows save, load, and delete operations",
+    "description": "Verify presets for customized tool configurations can be saved, loaded correctly, and deleted without errors across all tools.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Configure a tool with custom parameters"
+      },
+      {
+        "type": "action",
+        "description": "Save the current configuration as a preset"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm preset is added to preset list"
+      },
+      {
+        "type": "action",
+        "description": "Load the saved preset"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that the tool parameters reflect the preset's values"
+      },
+      {
+        "type": "action",
+        "description": "Delete the saved preset"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the preset is removed and cannot be loaded"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Export history logs exports with relevant details",
+    "description": "Check that each export action from any tool is logged in export history with correct metadata and can be managed by the user.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Perform exports from different tools with varying configurations"
+      },
+      {
+        "type": "assertion",
+        "description": "Check that export history lists each export with tool name, timestamp, and summary"
+      },
+      {
+        "type": "action",
+        "description": "Delete an entry from export history"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the deleted export no longer appears in history"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Theme toggling respects system preferences and manual override",
+    "description": "Test automatic dark/light mode switching based on system preference and manual user toggling with preference persistence.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Set system theme to dark mode"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify application automatically switches to dark mode"
+      },
+      {
+        "type": "action",
+        "description": "Manually toggle to light mode using theme toggle control"
+      },
+      {
+        "type": "assertion",
+        "description": "Check application changes to light mode and preference is saved"
+      },
+      {
+        "type": "action",
+        "description": "Reload application"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify saved theme preference overrides system theme"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Command Palette opens and navigates correctly",
+    "description": "Verify Command Palette is triggered by Cmd/Ctrl+K shortcut and navigates correctly between all tools and main pages.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Press Cmd/Ctrl+K keyboard shortcut"
+      },
+      {
+        "type": "assertion",
+        "description": "Ensure Command Palette overlay opens"
+      },
+      {
+        "type": "action",
+        "description": "Search and select different tools and pages from palette"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify navigation updates to selected tool or page"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Responsive layout adapts on various device sizes",
+    "description": "Test that all UI components including tools, menus, and previews render correctly and remain fully functional on desktop, tablet, and mobile screen sizes.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Access application using desktop screen size"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify full layout with visible navigation and tool panels"
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to tablet dimensions"
+      },
+      {
+        "type": "assertion",
+        "description": "Check layout adjusts for tablet with accessible controls"
+      },
+      {
+        "type": "action",
+        "description": "Resize viewport to narrow mobile width"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify optimized mobile view with responsive menus and usable tool interfaces"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "SEO components generate correct meta tags and sitemap",
+    "description": "Ensure SEO utilities generate valid meta tags, sitemap XML, and structured data conforming to SEO best practices and standards.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Generate meta tags for sample webpage using Meta Tags Generator"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify generated meta tags contain correct values and attributes"
+      },
+      {
+        "type": "action",
+        "description": "Generate sitemap and structured data"
+      },
+      {
+        "type": "assertion",
+        "description": "Validate sitemap XML structure and structured data correctness against SEO standards"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Subscription backend manages user sessions reliably",
+    "description": "Test Supabase backend integration for user subscription management including login state, session persistence, and subscription status retrieval.",
+    "category": "functional",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Sign in using valid subscriber account"
+      },
+      {
+        "type": "assertion",
+        "description": "Confirm user session is established and subscription status is retrieved"
+      },
+      {
+        "type": "action",
+        "description": "Sign out user"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify session is cleared and user is logged out"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to access subscriber-only features when signed out"
+      },
+      {
+        "type": "assertion",
+        "description": "Check access is denied or redirect to login"
+      }
+    ]
+  }
+]

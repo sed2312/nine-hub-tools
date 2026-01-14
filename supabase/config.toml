@@ -1,0 +1,4 @@
+project_id = "ayhxexffzggmqstrsxby"
+
+[functions.fastspring-webhook]
+verify_jwt = false
