@@ -22,9 +22,9 @@ export function HeroSection() {
       <div className="container relative mx-auto px-4 text-center">
         {/* Main Heading - Single H1 */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-          <span className="text-gradient">Free Online Tools</span>
+          <span className="text-gradient">9 Free CSS & Web Design Tools</span>
           <br />
-          <span className="text-foreground">for Developers, Designers & Creators</span>
+          <span className="text-foreground">for Faster Development</span>
         </h1>
 
         {/* Supporting Paragraph */}
