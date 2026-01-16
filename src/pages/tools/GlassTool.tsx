@@ -495,7 +495,7 @@ ${getTemplateContentHtml()}
             </div>
 
             {/* Content & Media Section */}
-            <div className="p-4 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-border">
+            <div className="p-4 rounded-lg bg-card/80 backdrop-blur-sm border border-border">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-2 h-2 rounded-full bg-sky-500"></div>
                 <Label className="text-sky-400 text-xs uppercase tracking-wider font-semibold">Content & Media</Label>
@@ -577,7 +577,7 @@ ${getTemplateContentHtml()}
             </div>
 
             {/* Glass Effect Controls */}
-            <div className="p-4 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-border space-y-5">
+            <div className="p-4 rounded-lg bg-card/80 backdrop-blur-sm border border-border space-y-5">
               <div className="flex items-center gap-2 mb-2">
                 <div className="w-2 h-2 rounded-full bg-purple-500"></div>
                 <Label className="text-purple-400 text-xs uppercase tracking-wider font-semibold">Glass Effect</Label>
@@ -726,7 +726,7 @@ ${getTemplateContentHtml()}
             </div>
 
             {/* Export */}
-            <div className="p-4 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-border">
+            <div className="p-4 rounded-lg bg-card/80 backdrop-blur-sm border border-border">
               <Tabs defaultValue="css">
                 <TabsList className="mb-4 w-full grid grid-cols-4">
                   <TabsTrigger value="css">CSS</TabsTrigger>
