@@ -23,6 +23,7 @@ export function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+  const dropdownTimeoutRef = useState<NodeJS.Timeout | null>(null)[0];
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -50,6 +51,20 @@ export function Navbar() {
     setMobileMenuOpen(false);
     setToolsDropdownOpen(false);
   }, [location.pathname]);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef) {
+      clearTimeout(dropdownTimeoutRef);
+    }
+    setToolsDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setToolsDropdownOpen(false);
+    }, 200); // 200ms delay before closing
+    Object.assign(dropdownTimeoutRef, timeout);
+  };
 
   return (
     <nav
@@ -81,8 +96,8 @@ export function Navbar() {
                 variant="ghost"
                 size="sm"
                 className="gap-1"
-                onMouseEnter={() => setToolsDropdownOpen(true)}
-                onMouseLeave={() => setToolsDropdownOpen(false)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
               >
                 Tools
@@ -92,8 +107,8 @@ export function Navbar() {
               {toolsDropdownOpen && (
                 <div
                   className="absolute top-full left-0 mt-1 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50"
-                  onMouseEnter={() => setToolsDropdownOpen(true)}
-                  onMouseLeave={() => setToolsDropdownOpen(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                 >
                   <ul className="list-none m-0 p-0">
                     {toolsList.map((tool) => (
