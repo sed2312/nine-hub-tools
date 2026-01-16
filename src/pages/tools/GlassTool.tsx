@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { Layout } from '@/components/layout/Layout';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ExportButton } from '@/components/tools/ExportButton';

@@ -34,12 +34,15 @@ export function Footer() {
           </div>
 
           {/* Links */}
-          <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="mailto:hello@nineproo.com" className="hover:text-foreground transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <Link to="/about" className="hover:text-foreground transition-colors">
+              About
+            </Link>
+            <Link to="/contact" className="hover:text-foreground transition-colors">
               Contact
-            </a>
+            </Link>
             <Link to="/privacy" className="hover:text-foreground transition-colors">
-              Privacy
+              Privacy Policy
             </Link>
             <Link to="/terms" className="hover:text-foreground transition-colors">
               Terms
