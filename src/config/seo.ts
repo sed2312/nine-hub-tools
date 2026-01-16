@@ -241,4 +241,33 @@ export const seoConfig: Record<string, PageSEO> = {
         keywords: ['terms of service', 'terms and conditions', 'legal'],
         canonical: 'https://nineproo.com/terms',
     },
+
+    // New legal pages
+    '/terms-of-service': {
+        title: 'Terms of Service - NineProo',
+        description: 'Terms of Service for NineProo. By using our free web tools, you agree to these terms. Learn about your rights, limitations, and our policies.',
+        keywords: ['terms of service', 'legal', 'terms and conditions', 'user agreement'],
+        canonical: 'https://nineproo.com/terms-of-service',
+    },
+
+    '/privacy-policy': {
+        title: 'Privacy Policy - NineProo',
+        description: 'Privacy Policy for NineProo. Learn how we collect, use, and protect your data when you use our free web design tools.',
+        keywords: ['privacy policy', 'data privacy', 'cookies', 'user data'],
+        canonical: 'https://nineproo.com/privacy-policy',
+    },
+
+    '/disclaimer': {
+        title: 'Disclaimer - NineProo',
+        description: 'Legal disclaimer for NineProo. Our web tools are provided as-is for educational purposes. Read the full disclaimer before use.',
+        keywords: ['disclaimer', 'legal notice', 'liability', 'terms of use'],
+        canonical: 'https://nineproo.com/disclaimer',
+    },
+
+    '/cookie-policy': {
+        title: 'Cookie Policy - NineProo',
+        description: 'Cookie Policy for NineProo. Learn about the cookies we use, how we use them, and how you can manage cookie preferences.',
+        keywords: ['cookie policy', 'cookies', 'tracking', 'privacy'],
+        canonical: 'https://nineproo.com/cookie-policy',
+    },
 };
