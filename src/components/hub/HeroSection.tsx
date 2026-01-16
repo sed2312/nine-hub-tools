@@ -1,4 +1,4 @@
-import { ArrowDown } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { EmailCapture } from '@/components/EmailCapture';
 
@@ -20,72 +20,57 @@ export function HeroSection() {
       <div className="absolute inset-0 grid-pattern opacity-50" />
 
       <div className="container relative mx-auto px-4 text-center">
-        {/* Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-          <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
-            Free Forever
-          </span>
-          <span className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium border border-border">
-            Instant Export
-          </span>
-          <span className="px-3 py-1 rounded-full bg-secondary text-secondary-foreground text-sm font-medium border border-border">
-            No Signup
-          </span>
-        </div>
-
-        {/* Heading */}
+        {/* Main Heading - Single H1 */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
-          <span className="text-gradient">Nine Essential</span>
+          <span className="text-gradient">Free Online Tools</span>
           <br />
-          <span className="text-foreground">Web Utilities</span>
+          <span className="text-foreground">for Developers, Designers & Creators</span>
         </h1>
 
-        {/* Subheading */}
+        {/* Supporting Paragraph */}
         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-          Professional-grade tools for modern web development.
-          Generate CSS, check accessibility, optimize prompts, and more.
+          Generate CSS, UI elements, AI prompts, and web utilities instantly — free to use for now, no login required.
         </p>
 
-        {/* Email Capture */}
-        <div className="flex flex-col items-center gap-4 mb-8">
-          <EmailCapture
-            source="Hero Section"
-            buttonText="Get Pro Updates"
-            placeholder="Enter your email..."
-            successMessage="🎉 Thanks! We'll notify you when Pro features launch."
-          />
-          <p className="text-xs text-muted-foreground">
-            Join the waitlist for Pro features • Launching soon
-          </p>
-        </div>
-
-        {/* CTA Button */}
+        {/* Primary CTA */}
         <Button
           size="lg"
           onClick={scrollToTools}
-          className="gap-2 mb-12"
-          variant="outline"
+          className="gap-2 mb-6"
         >
           Explore Tools
-          <ArrowDown className="h-4 w-4" />
+          <ArrowRight className="h-4 w-4" />
         </Button>
 
-        {/* Stats */}
-        <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">
+        {/* Trust Strip */}
+        <div className="flex flex-wrap items-center justify-center gap-4 mb-8 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-2xl text-foreground">9</span>
-            <span>Tools</span>
+            <Check className="h-4 w-4 text-primary" />
+            <span>Free to Use Now</span>
           </div>
-          <div className="w-px h-6 bg-border" />
+          <div className="w-px h-4 bg-border" />
           <div className="flex items-center gap-2">
-            <span className="font-bold text-2xl text-foreground">100%</span>
-            <span>Privacy</span>
+            <Check className="h-4 w-4 text-primary" />
+            <span>No Login Required</span>
           </div>
-          <div className="w-px h-6 bg-border" />
+          <div className="w-px h-4 bg-border" />
           <div className="flex items-center gap-2">
-            <span className="font-bold text-2xl text-foreground">0</span>
-            <span>Cost</span>
+            <Check className="h-4 w-4 text-primary" />
+            <span>Instant Results</span>
           </div>
+        </div>
+
+        {/* Secondary CTA - Waitlist */}
+        <div className="max-w-md mx-auto">
+          <EmailCapture
+            source="Hero Section"
+            buttonText="Join Waitlist"
+            placeholder="Enter your email for early access"
+            successMessage="🎉 You're on the list! We'll notify you about premium features."
+          />
+          <p className="text-xs text-muted-foreground mt-2">
+            Sign up for early access to premium features
+          </p>
         </div>
       </div>
     </section>
