@@ -19,6 +19,8 @@ import ShadowTool from "./pages/tools/ShadowTool";
 import BlobTool from "./pages/tools/BlobTool";
 import ContrastTool from "./pages/tools/ContrastTool";
 import MetaTool from "./pages/tools/MetaTool";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
                 <Route path="/blob" element={<BlobTool />} />
                 <Route path="/contrast" element={<ContrastTool />} />
                 <Route path="/meta" element={<MetaTool />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
