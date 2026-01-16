@@ -108,6 +108,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/sitemap" className="text-muted-foreground hover:text-foreground transition-colors">
+                  Sitemap
+                </Link>
+              </li>
+              <li>
                 <a
                   href="mailto:hello@nineproo.com"
                   className="text-muted-foreground hover:text-foreground transition-colors"

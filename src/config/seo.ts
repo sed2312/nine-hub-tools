@@ -309,6 +309,13 @@ export const seoConfig: Record<string, PageSEO> = {
         canonical: 'https://nineproo.com/contact',
     },
 
+    '/sitemap': {
+        title: 'Sitemap - All NineProo Tools & Pages',
+        description: 'Complete sitemap of all NineProo web design tools, company pages, and resources. Find all 9 free tools in one place.',
+        keywords: ['sitemap', 'site map', 'all tools', 'navigation', 'nineproo tools'],
+        canonical: 'https://nineproo.com/sitemap',
+    },
+
     '/privacy': {
         title: 'Privacy Policy - Nine Hub Tools',
         description: 'Read our privacy policy to understand how Nine Hub Tools collects, uses, and protects your personal data.',

@@ -23,6 +23,7 @@ import ContrastTool from "./pages/tools/ContrastTool";
 import MetaTool from "./pages/tools/MetaTool";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Sitemap from "./pages/Sitemap";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import TermsOfService from "./pages/TermsOfService";
@@ -58,6 +59,7 @@ const App = () => (
                   <Route path="/meta" element={<MetaTool />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/contact" element={<Contact />} />
+                  <Route path="/sitemap" element={<Sitemap />} />
                   <Route path="/privacy" element={<Privacy />} />
                   <Route path="/terms" element={<Terms />} />
                   <Route path="/terms-of-service" element={<TermsOfService />} />
