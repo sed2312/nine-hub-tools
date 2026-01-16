@@ -1,10 +1,39 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Default: Allow all bots
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://nineproo.com/sitemap.xml
+# Explicitly allow AI bots for content creation and analysis
+User-agent: GPTBot
+Allow: /
 
-# Disallow admin or private areas (if any in future)
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# Block known scrapers/crawlers we don't want
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+# Disallow private areas (future-proofing)
+User-agent: *
 Disallow: /api/
 Disallow: /admin/
+
+# Sitemap
+Sitemap: https://nineproo.com/sitemap.xml
