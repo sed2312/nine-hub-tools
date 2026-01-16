@@ -13,6 +13,33 @@ export const seoConfig: Record<string, PageSEO> = {
         description: 'Professional design tools for web developers. Generate glassmorphism, gradients, shadows, color palettes, and more. Free and open-source.',
         keywords: ['free web tools', 'developer tools', 'web design tools', 'css generator'],
         canonical: 'https://nineproo.com/',
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "NineProo",
+                "alternateName": "Nine Hub Tools",
+                "url": "https://nineproo.com",
+                "description": "Free online web design tools for developers, designers, and creators"
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "NineProo",
+                "url": "https://nineproo.com",
+                "logo": "https://nineproo.com/logo.png",
+                "sameAs": [
+                    "https://x.com/nine_proo",
+                    "https://www.instagram.com/nine_proo/",
+                    "https://github.com"
+                ],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "hello@nineproo.com",
+                    "contactType": "Customer Service"
+                }
+            }
+        ]
     },
 
     '/glass': {

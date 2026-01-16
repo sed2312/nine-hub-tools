@@ -35,9 +35,19 @@ export function SEOHead({ path }: SEOHeadProps) {
 
             {/* Schema.org JSON-LD */}
             {seo.schema && (
-                <script type="application/ld+json">
-                    {JSON.stringify(seo.schema)}
-                </script>
+                Array.isArray(seo.schema) ? (
+                    // Multiple schemas
+                    seo.schema.map((schema, index) => (
+                        <script key={index} type="application/ld+json">
+                            {JSON.stringify(schema)}
+                        </script>
+                    ))
+                ) : (
+                    // Single schema
+                    <script type="application/ld+json">
+                        {JSON.stringify(seo.schema)}
+                    </script>
+                )
             )}
         </Helmet>
     );
