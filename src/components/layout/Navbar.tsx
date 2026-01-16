@@ -1,41 +1,28 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import {
-  Layers,
-  MessageSquare,
-  Palette,
-  Grid3X3,
-  Type,
-  Box,
-  Circle,
-  Eye,
-  FileCode,
-  Menu,
-  X
-} from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { AboutModal } from '@/components/modals/AboutModal';
-import { ExportHistoryModal } from '@/components/modals/ExportHistoryModal';
-import { PricingModal } from '@/components/modals/PricingModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Logo } from '@/components/Logo';
 import { AuthButton } from '@/components/auth/AuthButton';
+import { PricingModal } from '@/components/modals/PricingModal';
 
-const tools = [
-  { path: '/glass', icon: Layers, label: 'Glass', color: 'text-glass' },
-  { path: '/prompt', icon: MessageSquare, label: 'Prompt', color: 'text-prompt' },
-  { path: '/palette', icon: Palette, label: 'Palette', color: 'text-palette' },
-  { path: '/grid', icon: Grid3X3, label: 'Grid', color: 'text-grid' },
-  { path: '/gradient-text', icon: Type, label: 'Gradient', color: 'text-gradient-text' },
-  { path: '/shadow', icon: Box, label: 'Shadow', color: 'text-shadow' },
-  { path: '/blob', icon: Circle, label: 'Blob', color: 'text-blob' },
-  { path: '/contrast', icon: Eye, label: 'Contrast', color: 'text-contrast' },
-  { path: '/meta', icon: FileCode, label: 'Meta', color: 'text-meta' },
+const toolsList = [
+  { path: '/glass', label: 'Glassmorphism Generator' },
+  { path: '/gradient-text', label: 'Gradient Text Generator' },
+  { path: '/shadow', label: 'Box Shadow Generator' },
+  { path: '/palette', label: 'Color Palette Generator' },
+  { path: '/grid', label: 'CSS Grid Generator' },
+  { path: '/blob', label: 'Blob SVG Generator' },
+  { path: '/contrast', label: 'Contrast Checker' },
+  { path: '/meta', label: 'Meta Tag Generator' },
+  { path: '/prompt', label: 'AI Prompt Helper' },
 ];
 
 export function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -58,42 +45,101 @@ export function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Close dropdowns when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setToolsDropdownOpen(false);
+  }, [location.pathname]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl"
+      aria-label="Main navigation"
+    >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Logo />
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
-            <Link to="/">
-              <Button variant="ghost" size="sm" className={location.pathname === '/' ? 'bg-secondary' : ''}>
-                Hub
-              </Button>
-            </Link>
-            <div className="flex items-center gap-0.5 px-2">
-              {tools.map((tool) => (
-                <Link key={tool.path} to={tool.path}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={`h-8 w-8 ${location.pathname === tool.path ? 'bg-secondary' : ''}`}
-                    title={tool.label}
-                  >
-                    <tool.icon className={`h-4 w-4 ${tool.color}`} />
-                  </Button>
-                </Link>
-              ))}
-            </div>
-          </div>
+          <ul className="hidden lg:flex items-center gap-1 list-none m-0 p-0">
+            <li>
+              <Link to="/">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={location.pathname === '/' ? 'bg-secondary' : ''}
+                >
+                  Home
+                </Button>
+              </Link>
+            </li>
 
-          {/* Right Side */}
+            {/* Tools Dropdown */}
+            <li className="relative">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="gap-1"
+                onMouseEnter={() => setToolsDropdownOpen(true)}
+                onMouseLeave={() => setToolsDropdownOpen(false)}
+                onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
+              >
+                Tools
+                <ChevronDown className="h-4 w-4" />
+              </Button>
+
+              {toolsDropdownOpen && (
+                <div
+                  className="absolute top-full left-0 mt-1 w-64 bg-background border border-border rounded-lg shadow-lg py-2"
+                  onMouseEnter={() => setToolsDropdownOpen(true)}
+                  onMouseLeave={() => setToolsDropdownOpen(false)}
+                >
+                  <ul className="list-none m-0 p-0">
+                    {toolsList.map((tool) => (
+                      <li key={tool.path}>
+                        <Link
+                          to={tool.path}
+                          className="block px-4 py-2 text-sm hover:bg-secondary transition-colors"
+                        >
+                          {tool.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+
+            <li>
+              <Link to="/about">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={location.pathname === '/about' ? 'bg-secondary' : ''}
+                >
+                  About
+                </Button>
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/contact">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={location.pathname === '/contact' ? 'bg-secondary' : ''}
+                >
+                  Contact
+                </Button>
+              </Link>
+            </li>
+          </ul>
+
+          {/* Right Side Actions */}
           <div className="flex items-center gap-1 md:gap-2">
             <div className="hidden md:flex items-center gap-2">
               <ThemeToggle />
-              <ExportHistoryModal />
-              <AboutModal />
             </div>
             <AuthButton />
             <PricingModal />
@@ -104,6 +150,8 @@ export function Navbar() {
               size="icon"
               className="lg:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
@@ -113,21 +161,49 @@ export function Navbar() {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden py-4 border-t border-border">
-            <div className="grid grid-cols-3 gap-2">
-              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="ghost" className="w-full justify-start">
-                  Hub
-                </Button>
-              </Link>
-              {tools.map((tool) => (
-                <Link key={tool.path} to={tool.path} onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="ghost" className="w-full justify-start gap-2">
-                    <tool.icon className={`h-4 w-4 ${tool.color}`} />
-                    {tool.label}
+            <ul className="flex flex-col gap-2 list-none m-0 p-0">
+              <li>
+                <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Home
                   </Button>
                 </Link>
-              ))}
-            </div>
+              </li>
+
+              {/* Tools Section */}
+              <li>
+                <div className="px-4 py-2 text-sm font-semibold text-muted-foreground">
+                  Tools
+                </div>
+                <ul className="list-none m-0 p-0 pl-2">
+                  {toolsList.map((tool) => (
+                    <li key={tool.path}>
+                      <Link to={tool.path} onClick={() => setMobileMenuOpen(false)}>
+                        <Button variant="ghost" className="w-full justify-start text-sm">
+                          {tool.label}
+                        </Button>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+
+              <li>
+                <Link to="/about" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start">
+                    About
+                  </Button>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Contact
+                  </Button>
+                </Link>
+              </li>
+            </ul>
           </div>
         )}
       </div>
