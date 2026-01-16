@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Layers,
@@ -37,6 +37,27 @@ export function Navbar() {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuOpen) {
+        const target = event.target as HTMLElement;
+        const nav = document.querySelector('nav');
+        if (nav && !nav.contains(target)) {
+          setMobileMenuOpen(false);
+        }
+      }
+    };
+
+    if (mobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
       <div className="container mx-auto px-4">
@@ -68,10 +89,12 @@ export function Navbar() {
           </div>
 
           {/* Right Side */}
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
-            <ExportHistoryModal />
-            <AboutModal />
+          <div className="flex items-center gap-1 md:gap-2">
+            <div className="hidden md:flex items-center gap-2">
+              <ThemeToggle />
+              <ExportHistoryModal />
+              <AboutModal />
+            </div>
             <AuthButton />
             <PricingModal />
 
