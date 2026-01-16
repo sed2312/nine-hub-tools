@@ -1,3 +1,10 @@
-<!-- This is a placeholder - Replace with actual icon-nineproo.jpg converted to .ico or .svg -->
-<!-- The actual image needs to be uploaded via GitHub web interface or git -->
-<!-- File: icon-nineproo.jpg should be converted to favicon.ico (16x16, 32x32, 48x48 sizes) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="50" y="75" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#grad)" text-anchor="middle">9</text>
+</svg>
