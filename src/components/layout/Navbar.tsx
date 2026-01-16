@@ -91,7 +91,7 @@ export function Navbar() {
 
               {toolsDropdownOpen && (
                 <div
-                  className="absolute top-full left-0 mt-1 w-64 bg-background border border-border rounded-lg shadow-lg py-2"
+                  className="absolute top-full left-0 mt-1 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50"
                   onMouseEnter={() => setToolsDropdownOpen(true)}
                   onMouseLeave={() => setToolsDropdownOpen(false)}
                 >

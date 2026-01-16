@@ -401,7 +401,7 @@ ${getTemplateContentHtml()}
               style={{ background: `linear-gradient(135deg, ${bgColor}, ${bgColor}88)` }}
             >
               {/* Decorative background */}
-              <div className="absolute inset-0 bg-slate-950 z-0">
+              <div className="absolute inset-0 bg-card z-0">
                 <div className="absolute inset-0 opacity-30" style={{
                   backgroundImage: 'linear-gradient(45deg, #334155 25%, transparent 25%), linear-gradient(-45deg, #334155 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #334155 75%), linear-gradient(-45deg, transparent 75%, #334155 75%)',
                   backgroundSize: '20px 20px',
@@ -442,7 +442,7 @@ ${getTemplateContentHtml()}
           {/* Controls */}
           <div className="order-1 lg:order-2 space-y-6">
             {/* Config Header */}
-            <div className="p-4 rounded-lg bg-slate-900/80 backdrop-blur-sm border border-border">
+            <div className="p-4 rounded-lg bg-card/80 backdrop-blur-sm border border-border">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold text-foreground">Config</h3>
                 <div className="flex gap-2">
