@@ -15,7 +15,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Switch } from '@/components/ui/switch';
-import { 
+import {
   RotateCcw, Grid3x3, Smartphone, Tablet, Monitor, Eye, EyeOff,
   AlignStartVertical, AlignCenterVertical, AlignEndVertical, AlignHorizontalSpaceAround,
   AlignStartHorizontal, AlignCenterHorizontal, AlignEndHorizontal, AlignVerticalSpaceAround,
@@ -24,6 +24,9 @@ import {
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
 import { gridPresets, getAllCategories, getPresetsByCategory, type GridPreset } from '@/lib/grid-presets';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 
 type AlignItems = 'start' | 'center' | 'end' | 'stretch';
 type JustifyItems = 'start' | 'center' | 'end' | 'stretch';
@@ -96,6 +99,33 @@ const sampleTexts = [
 
 export default function GridTool() {
   const [config, setConfig] = useState<GridConfig>(defaultConfig);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'CSS Grid', href: '/grid' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    },
+    {
+      name: 'Box Shadow',
+      path: '/shadow',
+      description: 'Create perfect CSS box shadows',
+      icon: '🌚'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    }
+  ];
+
   const [selectedCell, setSelectedCell] = useState<number | null>(null);
   const [breakpoint, setBreakpoint] = useState<Breakpoint>('desktop');
   const [showGridLines, setShowGridLines] = useState(true);
@@ -164,7 +194,7 @@ export default function GridTool() {
     const col = index % config.columns;
 
     setConfig(prev => {
-      const existingItem = prev.items.find(item => 
+      const existingItem = prev.items.find(item =>
         item.columnStart === col + 1 && item.rowStart === row + 1
       );
 
@@ -228,7 +258,7 @@ export default function GridTool() {
 
   const generateCSS = () => {
     const rowHeightValue = config.rowHeight === 0 ? '1fr' : `${config.rowHeight}px`;
-    const columnValue = config.autoFit 
+    const columnValue = config.autoFit
       ? `auto-fit, minmax(${config.minColumnWidth}px, 1fr)`
       : `${config.columns}, 1fr`;
 
@@ -238,7 +268,7 @@ export default function GridTool() {
 `;
     css += `grid-template-rows: repeat(${config.rows}, ${rowHeightValue});
 `;
-    
+
     if (useUnifiedGap) {
       css += `gap: ${config.gap}px;
 `;
@@ -305,7 +335,7 @@ Item ${idx + 1}:
 
   const gridStyle = {
     display: 'grid',
-    gridTemplateColumns: config.autoFit 
+    gridTemplateColumns: config.autoFit
       ? `repeat(auto-fit, minmax(${config.minColumnWidth}px, 1fr))`
       : `repeat(${config.columns}, 1fr)`,
     gridTemplateRows: `repeat(${config.rows}, ${config.rowHeight === 0 ? '1fr' : `${config.rowHeight}px`})`,
@@ -326,8 +356,8 @@ Item ${idx + 1}:
         return sampleTexts[index % sampleTexts.length];
       case 'images':
         return (
-          <img 
-            src={sampleImages[index % sampleImages.length]} 
+          <img
+            src={sampleImages[index % sampleImages.length]}
             alt={`Cell ${index + 1}`}
             className="w-full h-full object-cover"
           />
@@ -349,10 +379,13 @@ Item ${idx + 1}:
 
   return (
     <Layout>
+      <SEOHead path="/grid" />
       <ToolLayout
         title="Grid Architect"
         description="Professional CSS Grid designer with spanning, alignment, responsive preview, Elementor export, and 25+ presets"
         colorClass="text-grid"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
         headerActions={
           <>
             <KeyboardHints shortcuts={shortcuts} />
@@ -478,13 +511,13 @@ Item ${idx + 1}:
                 <h3 className="font-semibold">Preview</h3>
                 <Badge variant="outline">{breakpoint}</Badge>
               </div>
-              <motion.div 
+              <motion.div
                 className="p-6 rounded-xl bg-secondary/50 border border-border overflow-auto"
                 style={{ maxWidth: breakpointSizes[breakpoint] }}
                 layout
               >
-                <div 
-                  style={gridStyle} 
+                <div
+                  style={gridStyle}
                   className={cn(
                     'min-h-[400px] relative',
                     showGridLines && 'outline outline-2 outline-grid/30'
@@ -492,10 +525,10 @@ Item ${idx + 1}:
                 >
                   {Array.from({ length: totalCells }).map((_, i) => {
                     if (isCellCovered(i)) return null;
-                    
+
                     const item = getItemForCell(i);
                     const isSpanning = !!item;
-                    
+
                     const cellStyle = item ? {
                       gridColumn: `${item.columnStart} / ${item.columnEnd}`,
                       gridRow: `${item.rowStart} / ${item.rowEnd}`,
@@ -550,7 +583,7 @@ Item ${idx + 1}:
               {/* Grid Dimensions */}
               <Card className="p-4 space-y-4">
                 <h4 className="font-medium text-sm">Grid Dimensions</h4>
-                
+
                 <div className="space-y-2">
                   <div className="flex justify-between">
                     <Label className="text-sm">Columns</Label>
@@ -596,8 +629,8 @@ Item ${idx + 1}:
                 </div>
 
                 <div className="flex items-center gap-2 pt-2">
-                  <Switch 
-                    checked={config.autoFit} 
+                  <Switch
+                    checked={config.autoFit}
                     onCheckedChange={(checked) => setConfig({ ...config, autoFit: checked })}
                   />
                   <Label className="text-sm">Auto-fit columns</Label>
@@ -682,8 +715,8 @@ Item ${idx + 1}:
 
                 <div className="space-y-2">
                   <Label className="text-sm">Align Items</Label>
-                  <Select 
-                    value={config.alignItems} 
+                  <Select
+                    value={config.alignItems}
                     onValueChange={(v: AlignItems) => setConfig({ ...config, alignItems: v })}
                   >
                     <SelectTrigger>
@@ -700,8 +733,8 @@ Item ${idx + 1}:
 
                 <div className="space-y-2">
                   <Label className="text-sm">Justify Items</Label>
-                  <Select 
-                    value={config.justifyItems} 
+                  <Select
+                    value={config.justifyItems}
                     onValueChange={(v: JustifyItems) => setConfig({ ...config, justifyItems: v })}
                   >
                     <SelectTrigger>
@@ -770,7 +803,7 @@ Item ${idx + 1}:
                   <TabsTrigger value="elementor">Elementor</TabsTrigger>
                 </TabsList>
               </div>
-              
+
               <TabsContent value="css">
                 <div className="relative">
                   <pre className="p-4 rounded-lg bg-secondary text-sm overflow-x-auto max-h-[300px]">

@@ -19,6 +19,9 @@ import {
   Download, Info, AlertCircle, CheckCircle
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 import { cn } from '@/lib/utils';
 import {
   hexToHsl,
@@ -91,6 +94,32 @@ const generateInitialColors = (harmony: HarmonyType): ColorState[] => {
 };
 
 export default function PaletteTool() {
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Color Palette', href: '/palette' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    },
+    {
+      name: 'Contrast Checker',
+      path: '/contrast',
+      description: 'Check color contrast for accessibility',
+      icon: '👁️'
+    }
+  ];
+
   const [state, setState] = useState<PaletteState>({
     harmony: 'analogous',
     format: 'hex',
@@ -230,10 +259,13 @@ export default function PaletteTool() {
 
   return (
     <Layout>
+      <SEOHead path="/palette" />
       <ToolLayout
         title="Palette Master"
         description="Professional color palette generator with interactive shade picker, accessibility checker, Elementor export, and advanced features"
         colorClass="text-palette"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
         headerActions={
           <>
             <KeyboardHints shortcuts={shortcuts} />

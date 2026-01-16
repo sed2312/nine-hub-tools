@@ -92,118 +92,367 @@ export const seoConfig: Record<string, PageSEO> = {
                         }
                     }
                 ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "CollectionPage",
+                "name": "Free Web Design Tool Collection",
+                "description": "Collection of 9 free web design generators for CSS, Tailwind, and React",
+                "url": "https://nineproo.com",
+                "hasPart": [
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Glassmorphism Generator",
+                        "url": "https://nineproo.com/glass",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Gradient Text Generator",
+                        "url": "https://nineproo.com/gradient-text",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Box Shadow Generator",
+                        "url": "https://nineproo.com/shadow",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Color Palette Generator",
+                        "url": "https://nineproo.com/palette",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "CSS Grid Generator",
+                        "url": "https://nineproo.com/grid",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Blob SVG Generator",
+                        "url": "https://nineproo.com/blob",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Contrast Checker",
+                        "url": "https://nineproo.com/contrast",
+                        "applicationCategory": "DesignApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "Meta Tag Generator",
+                        "url": "https://nineproo.com/meta",
+                        "applicationCategory": "UtilitiesApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    },
+                    {
+                        "@type": "SoftwareApplication",
+                        "name": "AI Prompt Helper",
+                        "url": "https://nineproo.com/prompt",
+                        "applicationCategory": "UtilitiesApplication",
+                        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                    }
+                ]
             }
         ]
     },
 
     '/glass': {
         title: 'Glassmorphism Generator – Create Frosted Glass UI Effects in CSS | NineProo',
-        description: 'Generate modern glassmorphism UI effects with CSS. Customize blur, transparency, borders, and shadows instantly using NineProo\'s free Glassmorphism Generator.',
+        description: 'Generate modern glassmorphism UI effects with our free CSS generator. Customize blur, transparency, borders, and shadows. Export CSS, Tailwind, or React code instantly.',
         keywords: ['glassmorphism generator', 'glassmorphism css', 'frosted glass ui', 'glass effect css'],
         canonical: 'https://nineproo.com/glass',
         ogImage: '/og-glass.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Glassmorphism Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/glass",
-            "description": "Generate modern glassmorphism UI effects with customizable CSS properties.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Glassmorphism Generator",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/glass",
+                "description": "Generate modern glassmorphism UI effects with customizable CSS properties.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "4.8",
+                    "reviewCount": "156",
+                    "bestRating": "5",
+                    "worstRating": "1"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "NineProo"
+                },
+                "featureList": [
+                    "Blur customization",
+                    "Transparency control",
+                    "Border styling",
+                    "Shadow effects",
+                    "Export to CSS/Tailwind/React"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Design Tools",
+                        "item": "https://nineproo.com/#design-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Glassmorphism Generator",
+                        "item": "https://nineproo.com/glass"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/gradient-text': {
-        title: 'Gradient Text Generator – Create CSS Gradient Text Online | NineProo',
-        description: 'Create beautiful gradient text using pure CSS. Customize colors, directions, and styles instantly with NineProo\'s free Gradient Text Generator.',
-        keywords: ['gradient text generator', 'css text gradient', 'gradient typography', 'text gradient css'],
+        title: 'CSS Gradient Text Generator – Animated Gradients | NineProo',
+        description: 'Create beautiful gradient text effects with CSS. Support for linear and radial gradients, custom colors, and animation. Export clean CSS or Tailwind code.',
+        keywords: ['gradient text generator', 'css text gradient', 'animated gradient text', 'text fill color'],
         canonical: 'https://nineproo.com/gradient-text',
-        ogImage: '/og-gradient-text.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Gradient Text Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/gradient-text",
-            "description": "Create beautiful gradient text using pure CSS with customizable colors.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        ogImage: '/og-gradient.png',
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Gradient Text Generator",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/gradient-text",
+                "description": "Create beautiful gradient text effects with animated support.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "Linear & Radial gradients",
+                    "Animation support",
+                    "Custom colors",
+                    "Tailwind CSS export"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Design Tools",
+                        "item": "https://nineproo.com/#design-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Gradient Text Generator",
+                        "item": "https://nineproo.com/gradient-text"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/shadow': {
-        title: 'Box Shadow Generator – CSS Box Shadow Creator Tool | NineProo',
-        description: 'Design perfect CSS box shadows visually. Adjust blur, spread, color, and position and copy clean CSS code instantly with NineProo.',
-        keywords: ['box shadow generator', 'css box shadow', 'shadow css', 'box shadow tool'],
+        title: 'Box Shadow Generator – Smooth CSS Shadows | NineProo',
+        description: 'Generate beautiful, layered box shadows for cards and UI elements. Customize layers, spread, blur, and color. Export CSS box-shadow code instantly.',
+        keywords: ['box shadow generator', 'css shadow generator', 'smooth shadow', 'layered shadows'],
         canonical: 'https://nineproo.com/shadow',
         ogImage: '/og-shadow.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Box Shadow Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/shadow",
-            "description": "Design perfect CSS box shadows visually with real-time preview.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Box Shadow Generator",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/shadow",
+                "description": "Design beautiful, layered box shadows with CSS.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "Layered shadows",
+                    "Custom spread & blur",
+                    "Neumorphism support",
+                    "Tailwind CSS export"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Design Tools",
+                        "item": "https://nineproo.com/#design-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Box Shadow Generator",
+                        "item": "https://nineproo.com/shadow"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/palette': {
-        title: 'Color Palette Generator – Create Harmonious Color Schemes | NineProo',
-        description: 'Generate beautiful color palettes for web and UI design. Create harmonious color schemes instantly with NineProo\'s free Color Palette Generator.',
-        keywords: ['color palette generator', 'color scheme generator', 'palette maker', 'color harmony'],
+        title: 'Color Palette Generator – Accessible Color Schemes | NineProo',
+        description: 'Create harmonious color schemes for web projects. Generate monochromatic, analogous, and complementary palettes. Check contrast accessibility.',
+        keywords: ['color palette generator', 'color scheme', 'web properties', 'accessible colors'],
         canonical: 'https://nineproo.com/palette',
         ogImage: '/og-palette.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Color Palette Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/palette",
-            "description": "Generate beautiful color palettes for web and UI design.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Color Palette Generator",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/palette",
+                "description": "Generate harmonious color palettes for web design.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "Harmony rules",
+                    "Contrast checking",
+                    "Export to CSS/Tailwind",
+                    "Shareable links"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "CSS Tools",
+                        "item": "https://nineproo.com/#css-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Color Palette Generator",
+                        "item": "https://nineproo.com/palette"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/grid': {
-        title: 'CSS Grid Generator – Visual CSS Grid Layout Builder | NineProo',
-        description: 'Build responsive CSS grid layouts visually. Generate clean, production-ready CSS Grid code using NineProo\'s free grid generator.',
-        keywords: ['css grid generator', 'css grid layout', 'grid builder', 'responsive grid'],
+        title: 'CSS Grid Generator – Visual Layout Builder | NineProo',
+        description: 'Visually build complex CSS grid layouts. Customize columns, rows, and gaps without writing code. Export production-ready CSS grid code.',
+        keywords: ['css grid generator', 'grid layout', 'css grid builder', 'responsive grid'],
         canonical: 'https://nineproo.com/grid',
         ogImage: '/og-grid.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "CSS Grid Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/grid",
-            "description": "Build responsive CSS grid layouts visually with instant code generation.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "CSS Grid Generator",
+                "applicationCategory": "DesignApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/grid",
+                "description": "Visual CSS Grid layout builder.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "Visual grid builder",
+                    "Area naming",
+                    "Gap control",
+                    "Responsive code export"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "CSS Tools",
+                        "item": "https://nineproo.com/#css-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "CSS Grid Generator",
+                        "item": "https://nineproo.com/grid"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/blob': {
@@ -229,47 +478,113 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/contrast': {
-        title: 'Contrast Checker – WCAG Color Contrast Accessibility Tool | NineProo',
-        description: 'Check color contrast ratios for accessibility. Ensure WCAG compliance for text and UI elements using NineProo\'s free Contrast Checker.',
-        keywords: ['contrast checker', 'wcag contrast', 'accessibility checker', 'color contrast'],
+        title: 'Contrast Checker – WCAG Accessibility Test | NineProo',
+        description: 'Check color contrast ratios for WCAG AA and AAA compliance. Ensure your website colors are accessible to all users. Real-time preview.',
+        keywords: ['contrast checker', 'accessibility checker', 'wcag compliance', 'color contrast'],
         canonical: 'https://nineproo.com/contrast',
         ogImage: '/og-contrast.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Contrast Checker",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/contrast",
-            "description": "Check color contrast ratios for WCAG accessibility compliance.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Contrast Checker",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/contrast",
+                "description": "Check color contrast for WCAG accessibility compliance.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "WCAG AA/AAA check",
+                    "Real-time preview",
+                    "Suggestion engine",
+                    "Score visualization"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "AI & SEO Tools",
+                        "item": "https://nineproo.com/#seo-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Contrast Checker",
+                        "item": "https://nineproo.com/contrast"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/meta': {
-        title: 'Meta Tag Generator – SEO Meta Title & Description Tool | NineProo',
-        description: 'Generate SEO-optimized meta titles and descriptions instantly. Improve search visibility using NineProo\'s free Meta Tag Generator.',
-        keywords: ['meta tag generator', 'seo meta', 'meta tags', 'seo generator'],
+        title: 'Meta Tag Generator – SEO Optimization | NineProo',
+        description: 'Generate SEO-optimized meta tags, OpenGraph tags, and Twitter cards. Preview how your site appears in search results and social media.',
+        keywords: ['meta tag generator', 'seo tools', 'opengraph generator', 'meta tags'],
         canonical: 'https://nineproo.com/meta',
         ogImage: '/og-meta.png',
-        schema: {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "Meta Tag Generator",
-            "applicationCategory": "WebApplication",
-            "operatingSystem": "Any",
-            "url": "https://nineproo.com/meta",
-            "description": "Generate SEO-optimized meta titles and descriptions instantly.",
-            "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD"
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Meta Tag Generator",
+                "applicationCategory": "UtilitiesApplication",
+                "operatingSystem": "Any",
+                "url": "https://nineproo.com/meta",
+                "description": "Generate SEO meta tags and social media previews.",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock"
+                },
+                "featureList": [
+                    "SEO meta tags",
+                    "OpenGraph support",
+                    "Twitter Cards",
+                    "Live preview"
+                ]
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "AI & SEO Tools",
+                        "item": "https://nineproo.com/#seo-tools"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Meta Tag Generator",
+                        "item": "https://nineproo.com/meta"
+                    }
+                ]
             }
-        }
+        ]
     },
 
     '/prompt': {

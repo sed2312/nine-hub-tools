@@ -6,6 +6,8 @@ import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ExportButton } from '@/components/tools/ExportButton';
 import { KeyboardHints } from '@/components/tools/KeyboardHints';
 import { PresetManager } from '@/components/tools/PresetManager';
+import { ContextualRecommendations } from '@/components/tools/ContextualRecommendations';
+import { RelatedTools } from '@/components/tools/RelatedTools';
 import { usePresets } from '@/hooks/use-presets';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { Slider } from '@/components/ui/slider';
@@ -369,12 +371,41 @@ ${getTemplateContentHtml()}
     onCopy: handleCopy,
   });
 
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Glassmorphism', href: '/glass' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text effects',
+      icon: '🌈'
+    },
+    {
+      name: 'Box Shadow',
+      path: '/shadow',
+      description: 'Generate beautiful CSS box shadows',
+      icon: '👻'
+    },
+    {
+      name: 'Color Palette',
+      path: '/palette',
+      description: 'Create harmonious color schemes',
+      icon: '🎨'
+    }
+  ];
+
   return (
     <Layout>
+      <SEOHead path="/glass" />
       <ToolLayout
         title="Glass Architect"
         description="Generate stunning glassmorphism CSS effects with card templates and live preview"
         colorClass="text-glass"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
         headerActions={
           <>
             <KeyboardHints shortcuts={shortcuts} />

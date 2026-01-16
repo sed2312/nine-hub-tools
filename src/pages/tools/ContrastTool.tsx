@@ -13,6 +13,9 @@ import { ArrowLeftRight, Lightbulb, RotateCcw, Shuffle } from 'lucide-react';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { usePresets } from '@/hooks/use-presets';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 
 interface ContrastConfig {
   foreground: string;
@@ -85,28 +88,28 @@ const getContrastRatio = (fg: string, bg: string): number => {
 const fixContrast = (fgHex: string, bgHex: string, target: 'fg' | 'bg', targetRatio: number): string => {
   const fgHsl = hexToHsl(fgHex);
   const bgHsl = hexToHsl(bgHex);
-  
+
   const workingHsl = target === 'fg' ? { ...fgHsl } : { ...bgHsl };
   const otherHex = target === 'fg' ? bgHex : fgHex;
   const [or, og, ob] = hexToRgb(otherHex);
   const otherLum = getLuminance(or, og, ob);
-  
+
   const direction = otherLum < 0.5 ? 1 : -1;
-  
+
   for (let i = 0; i < 100; i++) {
     const newHex = hslToHex(workingHsl.h, workingHsl.s, workingHsl.l);
-    const ratio = target === 'fg' 
+    const ratio = target === 'fg'
       ? getContrastRatio(newHex, bgHex)
       : getContrastRatio(fgHex, newHex);
-    
+
     if (ratio >= targetRatio) return newHex;
-    
+
     workingHsl.l += direction * 2;
     workingHsl.l = Math.max(0, Math.min(100, workingHsl.l));
-    
+
     if (workingHsl.l === 0 || workingHsl.l === 100) break;
   }
-  
+
   return hslToHex(workingHsl.h, workingHsl.s, workingHsl.l);
 };
 
@@ -127,6 +130,33 @@ const defaultConfig: ContrastConfig = {
 
 export default function ContrastTool() {
   const [config, setConfig] = useState<ContrastConfig>(defaultConfig);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Contrast Checker', href: '/contrast' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Color Palette',
+      path: '/palette',
+      description: 'Create harmonious color schemes',
+      icon: '🎨'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    },
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    }
+  ];
+
   const [fgInput, setFgInput] = useState(defaultConfig.foreground);
   const [bgInput, setBgInput] = useState(defaultConfig.background);
   const [visionMode, setVisionMode] = useState('none');
@@ -230,10 +260,13 @@ export default function ContrastTool() {
 
   return (
     <Layout>
+      <SEOHead path="/contrast" />
       <ToolLayout
         title="Contrast Eye"
         description="WCAG accessibility checker with vision simulations and auto-fix suggestions"
         colorClass="text-contrast"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
       >
         {/* SVG Filters for color blindness simulation */}
         <svg className="hidden">
@@ -255,7 +288,7 @@ export default function ContrastTool() {
           <div className="space-y-6">
             <motion.div
               className="p-8 rounded-xl min-h-[300px] flex flex-col items-center justify-center gap-4 transition-all relative"
-              style={{ 
+              style={{
                 backgroundColor: config.background,
                 filter: visionFilters[visionMode],
               }}
@@ -268,8 +301,8 @@ export default function ContrastTool() {
                   {visionMode}
                 </span>
               )}
-              <motion.p 
-                style={{ color: config.foreground }} 
+              <motion.p
+                style={{ color: config.foreground }}
                 className="text-sm"
                 key={`${config.foreground}-sm`}
                 initial={{ opacity: 0 }}
@@ -277,8 +310,8 @@ export default function ContrastTool() {
               >
                 Small text (14px)
               </motion.p>
-              <motion.p 
-                style={{ color: config.foreground }} 
+              <motion.p
+                style={{ color: config.foreground }}
                 className="text-lg font-bold"
                 key={`${config.foreground}-lg`}
                 initial={{ opacity: 0 }}
@@ -286,8 +319,8 @@ export default function ContrastTool() {
               >
                 Bold text (18px)
               </motion.p>
-              <motion.p 
-                style={{ color: config.foreground }} 
+              <motion.p
+                style={{ color: config.foreground }}
                 className="text-2xl"
                 key={`${config.foreground}-xl`}
                 initial={{ opacity: 0 }}
@@ -384,7 +417,7 @@ export default function ContrastTool() {
             </div>
 
             {/* Contrast Ratio */}
-            <motion.div 
+            <motion.div
               className="p-6 rounded-xl bg-secondary/50 border border-border space-y-4"
               key={result.ratio.toFixed(2)}
               initial={{ scale: 0.98 }}
@@ -392,7 +425,7 @@ export default function ContrastTool() {
               transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
               <div className="text-center">
-                <motion.div 
+                <motion.div
                   className="text-4xl font-bold"
                   key={result.ratio}
                   initial={{ opacity: 0, y: -10 }}
@@ -406,9 +439,8 @@ export default function ContrastTool() {
               {/* Ratio Bar */}
               <div className="h-3 rounded-full bg-secondary overflow-hidden">
                 <motion.div
-                  className={`h-full ${
-                    result.aaa ? 'bg-green-500' : result.aa ? 'bg-yellow-500' : 'bg-red-500'
-                  }`}
+                  className={`h-full ${result.aaa ? 'bg-green-500' : result.aa ? 'bg-yellow-500' : 'bg-red-500'
+                    }`}
                   initial={{ width: 0 }}
                   animate={{ width: `${ratioPercentage}%` }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -446,7 +478,7 @@ export default function ContrastTool() {
 
             {/* Auto-fix Suggestions */}
             {!result.aa && (
-              <motion.div 
+              <motion.div
                 className="p-4 rounded-lg bg-contrast/10 border border-contrast/20 space-y-3"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}

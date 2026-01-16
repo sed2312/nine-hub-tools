@@ -5,6 +5,7 @@ import { WhySection } from '@/components/hub/WhySection';
 import { ToolsGrid } from '@/components/hub/ToolsGrid';
 import { PricingSection } from '@/components/hub/PricingSection';
 import { FAQSection } from '@/components/hub/FAQSection';
+import { ExitIntentModal } from '@/components/modals/ExitIntentModal';
 
 const Index = () => {
   return (
@@ -15,6 +16,7 @@ const Index = () => {
       <ToolsGrid />
       <PricingSection />
       <FAQSection />
+      <ExitIntentModal />
     </Layout>
   );
 };

@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
+
 import { Layout } from '@/components/layout/Layout';
 import { ToolLayout } from '@/components/tools/ToolLayout';
 import { ExportButton } from '@/components/tools/ExportButton';
@@ -15,6 +16,8 @@ import { RotateCcw, Shuffle, Sun, Moon } from 'lucide-react';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { usePresets } from '@/hooks/use-presets';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
 
 interface GradientConfig {
   text: string;
@@ -128,6 +131,32 @@ export default function GradientTextTool() {
     onReset: reset,
   });
 
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Gradient Text', href: '/gradient-text' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    },
+    {
+      name: 'Color Palette',
+      path: '/palette',
+      description: 'Create harmonious color schemes',
+      icon: '🎨'
+    },
+    {
+      name: 'Contrast Checker',
+      path: '/contrast',
+      description: 'Check color contrast for accessibility',
+      icon: '👁️'
+    }
+  ];
+
   const renderPreview = () => {
     const { text, highlightWord } = config;
 
@@ -188,91 +217,91 @@ export default function GradientTextTool() {
 
   const cssCode = config.highlightWord && config.text.includes(config.highlightWord)
     ? `/* CSS */
-.gradient-word {
-  background: ${gradientCSS};
-  -webkit-background-clip: text;
-  color: transparent;
-  font-weight: bold;
+            .gradient-word {
+              background: ${gradientCSS};
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: bold;
 }
 
-<!-- HTML -->
-<h1>${config.text.replace(config.highlightWord, `<span class="gradient-word">${config.highlightWord}</span>`)}</h1>`
+            <!-- HTML -->
+            <h1>${config.text.replace(config.highlightWord, `<span class="gradient-word">${config.highlightWord}</span>`)}</h1>`
     : `.gradient-text {
-  background: ${gradientCSS};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-size: ${config.fontSize}px;
-  font-weight: 800;
+              background: ${gradientCSS};
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: ${config.fontSize}px;
+            font-weight: 800;
 }`;
 
   const tailwindCode = config.highlightWord && config.text.includes(config.highlightWord)
     ? `<h1 class="text-white font-bold text-[${config.fontSize}px]">
-  ${config.text.replace(config.highlightWord, `<span class="bg-clip-text text-transparent bg-gradient-to-${twDir} from-[${config.color1}] to-[${config.color2}]">${config.highlightWord}</span>`)}
-</h1>`
+              ${config.text.replace(config.highlightWord, `<span class="bg-clip-text text-transparent bg-gradient-to-${twDir} from-[${config.color1}] to-[${config.color2}]">${config.highlightWord}</span>`)}
+            </h1>`
     : `<h1 class="font-extrabold text-[${config.fontSize}px] bg-clip-text text-transparent bg-gradient-to-${twDir} from-[${config.color1}] to-[${config.color2}]">
-  ${config.text}
-</h1>`;
+              ${config.text}
+            </h1>`;
 
   const reactCode = config.highlightWord && config.text.includes(config.highlightWord)
     ? `const GradientText = () => (
-  <h1 className="text-white font-bold" style={{ fontSize: '${config.fontSize}px' }}>
-    ${config.text.split(config.highlightWord)[0]}
-    <span style={{ 
-      background: '${gradientCSS}', 
-      WebkitBackgroundClip: 'text', 
-      color: 'transparent' 
-    }}>
-      ${config.highlightWord}
-    </span>
-    ${config.text.split(config.highlightWord)[1] || ''}
-  </h1>
-);`
+            <h1 className="text-white font-bold" style={{ fontSize: '${config.fontSize}px' }}>
+              ${config.text.split(config.highlightWord)[0]}
+              <span style={{
+                background: '${gradientCSS}',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent'
+              }}>
+                ${config.highlightWord}
+              </span>
+              ${config.text.split(config.highlightWord)[1] || ''}
+            </h1>
+            );`
     : `const GradientText = () => (
-  <h1 style={{ 
-    fontSize: '${config.fontSize}px',
-    background: '${gradientCSS}', 
-    WebkitBackgroundClip: 'text', 
-    WebkitTextFillColor: 'transparent', 
-    fontWeight: '800' 
-  }}>
-    ${config.text}
-  </h1>
-);`;
+            <h1 style={{
+              fontSize: '${config.fontSize}px',
+              background: '${gradientCSS}',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontWeight: '800'
+            }}>
+              ${config.text}
+            </h1>
+            );`;
 
   const inlineCode = config.highlightWord && config.text.includes(config.highlightWord)
     ? `<h1 style="color: ${darkPreview ? '#ffffff' : '#0f172a'}; font-weight: 700; font-size: ${config.fontSize}px;">
-  ${config.text.replace(config.highlightWord, `<span style="background: ${gradientCSS}; -webkit-background-clip: text; color: transparent; font-weight: 800;">${config.highlightWord}</span>`)}
-</h1>`
+              ${config.text.replace(config.highlightWord, `<span style="background: ${gradientCSS}; -webkit-background-clip: text; color: transparent; font-weight: 800;">${config.highlightWord}</span>`)}
+            </h1>`
     : `<h1 style="background: ${gradientCSS}; -webkit-background-clip: text; color: transparent; font-weight: 800; font-size: ${config.fontSize}px;">
-  ${config.text}
-</h1>`;
+              ${config.text}
+            </h1>`;
 
   const elementorCode = `/* Elementor Gradient Text Settings */
-/* Navigate to: Typography > Text Color */
+            /* Navigate to: Typography > Text Color */
 
-Text Color: Gradient
+            Text Color: Gradient
 
-Gradient Type: Linear
-Angle: ${elAngle}°
+            Gradient Type: Linear
+            Angle: ${elAngle}°
 
-Color 1: ${config.color1}
-Location: 0%
+            Color 1: ${config.color1}
+            Location: 0%
 
-Color 2: ${config.color2}
-Location: 100%
+            Color 2: ${config.color2}
+            Location: 100%
 
-/* Typography */
-Font Size: ${config.fontSize}px
-Font Weight: ${config.highlightWord ? '700' : '800'}
+            /* Typography */
+            Font Size: ${config.fontSize}px
+            Font Weight: ${config.highlightWord ? '700' : '800'}
 
 /* Alternative: Custom CSS */
-/* If gradient text not supported, add this to Custom CSS: */
-selector {
-  background: ${gradientCSS};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+            /* If gradient text not supported, add this to Custom CSS: */
+            selector {
+              background: ${gradientCSS};
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
 }`;
 
   const applyPreset = (preset: typeof presets[0]) => {
@@ -281,6 +310,7 @@ selector {
 
   return (
     <Layout>
+      <SEOHead path="/gradient-text" />
       <style>{`
         @keyframes gradient {
           0% { background-position: 0% 50%; }
@@ -295,6 +325,8 @@ selector {
         title="Gradient Text"
         description="Create eye-catching gradient text effects with animation, 3 colors, custom fonts, and more"
         colorClass="text-gradient-text"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
       >
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Preview */}

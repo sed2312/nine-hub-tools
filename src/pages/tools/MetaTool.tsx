@@ -15,6 +15,9 @@ import { AlertCircle, Check, Image, RotateCcw } from 'lucide-react';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { usePresets } from '@/hooks/use-presets';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 
 interface MetaConfig {
   title: string;
@@ -47,6 +50,33 @@ const platforms = [
 
 export default function MetaTool() {
   const [config, setConfig] = useState<MetaConfig>(defaultConfig);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Meta Tag Generator', href: '/meta' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'AI Prompt Helper',
+      path: '/prompt',
+      description: 'Optimize AI prompts for better results',
+      icon: '🤖'
+    },
+    {
+      name: 'Contrast Checker',
+      path: '/contrast',
+      description: 'Check color contrast for accessibility',
+      icon: '👁️'
+    },
+    {
+      name: 'Information Architecture',
+      path: '/sitemap',
+      description: 'Visualize site structure',
+      icon: '🗺️'
+    }
+  ];
+
   const { toast } = useToast();
 
   const { presets, savePreset, deletePreset, getShareableUrl, loadFromUrl } = usePresets('meta', config);
@@ -140,10 +170,13 @@ ${socialTag}
 
   return (
     <Layout>
+      <SEOHead path="/meta" />
       <ToolLayout
         title="Meta Tags"
         description="SEO and Open Graph meta tag generator with live Google and social previews"
         colorClass="text-meta"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
       >
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Form */}

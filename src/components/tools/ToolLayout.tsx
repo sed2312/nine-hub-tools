@@ -17,6 +17,7 @@ interface ToolLayoutProps {
   children: ReactNode;
   headerActions?: ReactNode;
   breadcrumbs?: BreadcrumbItem[];
+  relatedTools?: ReactNode;
 }
 
 export function ToolLayout({
@@ -25,7 +26,8 @@ export function ToolLayout({
   colorClass,
   children,
   headerActions,
-  breadcrumbs
+  breadcrumbs,
+  relatedTools
 }: ToolLayoutProps) {
   return (
     <motion.div
@@ -72,6 +74,18 @@ export function ToolLayout({
         >
           {children}
         </motion.div>
+
+        {/* Related Tools */}
+        {relatedTools && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {relatedTools}
+          </motion.div>
+        )}
       </div>
     </motion.div>
   );

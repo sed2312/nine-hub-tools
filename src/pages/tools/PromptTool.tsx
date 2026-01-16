@@ -21,6 +21,9 @@ import {
   Copy, Download, FileJson, Code, Check
 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 import { promptTemplates, getAllCategories, getTemplateById } from '@/lib/prompt-templates';
 import {
   analyzePromptQuality,
@@ -75,6 +78,33 @@ const defaultState = {
 
 export default function PromptTool() {
   const [state, setState] = useState(defaultState);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Prompt Engineer', href: '/prompt' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Meta Tags',
+      path: '/meta',
+      description: 'Generate SEO meta tags',
+      icon: '🏷️'
+    },
+    {
+      name: 'Contrast Checker',
+      path: '/contrast',
+      description: 'Check color contrast accessibility',
+      icon: '👁️'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    }
+  ];
+
   const [showTemplates, setShowTemplates] = useState(false);
   const [exportFormat, setExportFormat] = useState<'text' | 'json' | 'api'>('text');
   const [copied, setCopied] = useState(false);
@@ -291,10 +321,13 @@ export default function PromptTool() {
 
   return (
     <Layout>
+      <SEOHead path="/prompt" />
       <ToolLayout
         title="Prompt Engineer"
         description="Professional AI prompt optimization with templates, quality analysis, and advanced features"
         colorClass="text-prompt"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
         headerActions={
           <>
             <KeyboardHints shortcuts={shortcuts} />

@@ -14,6 +14,9 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { RotateCcw, Shuffle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 
 interface ShadowConfig {
   size: number;
@@ -98,6 +101,33 @@ const hexToRGBA = (hex: string, alpha: number = 1): string => {
 
 export default function ShadowTool() {
   const [config, setConfig] = useState<ShadowConfig>(defaultConfig);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Box Shadow', href: '/shadow' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    },
+    {
+      name: 'Color Palette',
+      path: '/palette',
+      description: 'Create harmonious color schemes',
+      icon: '🎨'
+    }
+  ];
+
   const { toast } = useToast();
 
   const { presets, savePreset, deletePreset, getShareableUrl, loadFromUrl } = usePresets('shadow', config);
@@ -228,10 +258,13 @@ Background Color: ${config.bgColor}`;
 
   return (
     <Layout>
+      <SEOHead path="/shadow" />
       <ToolLayout
         title="Shadow Studio"
         description="Design neumorphic shadows with light source control, shape presets, and Elementor export"
         colorClass="text-shadow"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
         headerActions={
           <>
             <KeyboardHints shortcuts={shortcuts} />

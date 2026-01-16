@@ -15,6 +15,9 @@ import { RotateCcw, Shuffle, Download } from 'lucide-react';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { usePresets } from '@/hooks/use-presets';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
+import { RelatedTools } from '@/components/tools/RelatedTools';
+
 
 interface BlobConfig {
   complexity: number;
@@ -49,6 +52,33 @@ const defaultConfig: BlobConfig = {
 
 export default function BlobTool() {
   const [config, setConfig] = useState<BlobConfig>(defaultConfig);
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Blob Maker', href: '/blob' },
+  ];
+
+  const relatedTools = [
+    {
+      name: 'Glassmorphism',
+      path: '/glass',
+      description: 'Create modern frosted glass UI effects',
+      icon: '💎'
+    },
+    {
+      name: 'Gradient Text',
+      path: '/gradient-text',
+      description: 'Create animated gradient text',
+      icon: '🌈'
+    },
+    {
+      name: 'Shadow Generator',
+      path: '/shadow',
+      description: 'Create soft neumorphic shadows',
+      icon: '🌑'
+    }
+  ];
+
   const { toast } = useToast();
 
   const { presets, savePreset, deletePreset, getShareableUrl, loadFromUrl } = usePresets('blob', config);
@@ -162,10 +192,13 @@ ${animKeyframes}` : '\n}'}`;
 
   return (
     <Layout>
+      <SEOHead path="/blob" />
       <ToolLayout
         title="Blob Maker"
         description="Generate organic blob shapes with gradient colors, rotation, and animation"
         colorClass="text-blob"
+        breadcrumbs={breadcrumbs}
+        relatedTools={<RelatedTools tools={relatedTools} />}
       >
         <style>{`
           @keyframes morphBlob {
