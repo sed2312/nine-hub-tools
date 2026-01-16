@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import prerender from 'vite-plugin-prerender';
 import path from "path";
 
 // https://vitejs.dev/config/
@@ -11,21 +10,6 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    prerender({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: [
-        '/',
-        '/glass',
-        '/gradient-text',
-        '/shadow',
-        '/palette',
-        '/grid',
-        '/blob',
-        '/contrast',
-        '/meta',
-        '/prompt',
-      ],
-    }),
   ],
   resolve: {
     alias: {
@@ -71,3 +55,4 @@ export default defineConfig(({ mode }) => ({
     ],
   },
 }));
+
