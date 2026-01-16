@@ -45,6 +45,32 @@ export function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Close Tools dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (toolsDropdownOpen) {
+        const target = event.target as HTMLElement;
+        const dropdown = document.querySelector('[data-dropdown="tools"]');
+        const button = document.querySelector('[data-dropdown-button="tools"]');
+
+        if (dropdown && !dropdown.contains(target) && button && !button.contains(target)) {
+          setToolsDropdownOpen(false);
+        }
+      }
+    };
+
+    if (toolsDropdownOpen) {
+      // Small delay to prevent immediate closing when opening
+      setTimeout(() => {
+        document.addEventListener('click', handleClickOutside);
+      }, 100);
+    }
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [toolsDropdownOpen]);
+
   // Close dropdowns when route changes
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -82,6 +108,7 @@ export function Navbar() {
                 size="sm"
                 className="gap-1"
                 onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
+                data-dropdown-button="tools"
               >
                 Tools
                 <ChevronDown className="h-4 w-4" />
@@ -90,6 +117,7 @@ export function Navbar() {
               {toolsDropdownOpen && (
                 <div
                   className="absolute top-full left-0 mt-1 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50"
+                  data-dropdown="tools"
                 >
                   <ul className="list-none m-0 p-0">
                     {toolsList.map((tool) => (
