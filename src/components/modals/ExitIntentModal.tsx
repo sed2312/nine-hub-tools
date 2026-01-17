@@ -15,7 +15,7 @@ export function ExitIntentModal() {
         if (modalSeen) return;
 
         let mouseY = 0;
-        let topThreshold = 50; // Distance from top to trigger
+        const topThreshold = 50; // Distance from top to trigger
 
         const handleMouseMove = (e: MouseEvent) => {
             mouseY = e.clientY;

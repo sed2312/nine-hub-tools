@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Check, Copy } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -12,12 +12,12 @@ interface CopyButtonProps {
   showToast?: boolean;
 }
 
-export const CopyButton = ({ 
-  text, 
-  label = 'Copy', 
+export const CopyButton = memo(({
+  text,
+  label = 'Copy',
   variant = 'outline',
   className = '',
-  showToast = true 
+  showToast = true
 }: CopyButtonProps) => {
   const [copied, setCopied] = useState(false);
   const { toast } = useToast();
@@ -26,7 +26,7 @@ export const CopyButton = ({
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      
+
       if (showToast) {
         toast({
           title: 'Copied!',
@@ -35,7 +35,7 @@ export const CopyButton = ({
       }
 
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch {
       toast({
         title: 'Failed to copy',
         description: 'Please try again',
@@ -78,4 +78,6 @@ export const CopyButton = ({
       </AnimatePresence>
     </Button>
   );
-};
+});
+
+CopyButton.displayName = 'CopyButton';

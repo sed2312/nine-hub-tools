@@ -489,11 +489,11 @@ export default function PaletteTool() {
                     style={{
                       background: generateGradient(
                         state.colors.map(c => c.hex),
-                        direction as any
+                        direction as Parameters<typeof generateGradient>[1]
                       ),
                     }}
                     onClick={() => {
-                      const gradient = generateGradient(state.colors.map(c => c.hex), direction as any);
+                      const gradient = generateGradient(state.colors.map(c => c.hex), direction as Parameters<typeof generateGradient>[1]);
                       navigator.clipboard.writeText(`background: ${gradient};`);
                       toast({ title: 'Gradient copied!' });
                     }}

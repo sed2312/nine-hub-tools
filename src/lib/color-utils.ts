@@ -238,10 +238,11 @@ export function simulateColorBlindness(hex: string, type: ColorBlindType): strin
       newG = 0.433 * g + 0.567 * b;
       newB = 0.475 * g + 0.525 * b;
       break;
-    case 'achromatopsia': // Total color blindness
+    case 'achromatopsia': { // Total color blindness
       const gray = 0.299 * r + 0.587 * g + 0.114 * b;
       newR = newG = newB = gray;
       break;
+    }
   }
 
   const toHex = (x: number) => {

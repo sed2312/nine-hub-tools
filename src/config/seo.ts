@@ -1,10 +1,13 @@
+// JSON-LD schema type (can be single schema or array of schemas)
+type SchemaObject = Record<string, unknown> | Array<Record<string, unknown>>;
+
 export interface PageSEO {
     title: string;
     description: string;
     keywords: string[];
     canonical: string;
     ogImage?: string;
-    schema?: any;
+    schema?: SchemaObject;
 }
 
 export const seoConfig: Record<string, PageSEO> = {

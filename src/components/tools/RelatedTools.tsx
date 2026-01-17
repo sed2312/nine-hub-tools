@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { memo } from 'react';
 
 interface Tool {
     name: string;
@@ -12,7 +13,7 @@ interface RelatedToolsProps {
     tools: Tool[];
 }
 
-export function RelatedTools({ tools }: RelatedToolsProps) {
+export const RelatedTools = memo(function RelatedTools({ tools }: RelatedToolsProps) {
     return (
         <section className="mt-16 pt-8 border-t border-border">
             <h2 className="text-2xl font-bold mb-6">Related Tools</h2>
@@ -42,4 +43,4 @@ export function RelatedTools({ tools }: RelatedToolsProps) {
             </div>
         </section>
     );
-}
+});

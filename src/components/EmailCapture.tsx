@@ -4,6 +4,11 @@ import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, Loader2, CheckCircle2 } from 'lucide-react';
 
+// Extend Window interface for Plausible analytics
+interface PlausibleWindow extends Window {
+    plausible?: (event: string, options?: { props: Record<string, string> }) => void;
+}
+
 interface EmailCaptureProps {
     source?: string;
     variant?: 'inline' | 'modal' | 'footer';
@@ -71,8 +76,8 @@ export function EmailCapture({
                 setSubmitted(true);
 
                 // Track with analytics if available
-                if (typeof window !== 'undefined' && (window as any).plausible) {
-                    (window as any).plausible('Email Captured', { props: { source } });
+                if (typeof window !== 'undefined' && (window as PlausibleWindow).plausible) {
+                    (window as PlausibleWindow).plausible('Email Captured', { props: { source } });
                 }
 
                 // Reset after 5 seconds

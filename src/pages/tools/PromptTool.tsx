@@ -622,7 +622,7 @@ export default function PromptTool() {
 
                 {optimizedPrompt && (
                   <div className="flex items-center gap-2">
-                    <Select value={exportFormat} onValueChange={(v: any) => setExportFormat(v)}>
+                    <Select value={exportFormat} onValueChange={(v) => setExportFormat(v as 'text' | 'json' | 'api')}>
                       <SelectTrigger className="w-[120px] h-8">
                         <SelectValue />
                       </SelectTrigger>

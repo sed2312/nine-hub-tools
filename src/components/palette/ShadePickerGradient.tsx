@@ -1,4 +1,4 @@
-import { useState, useRef, MouseEvent, useEffect } from 'react';
+import { useState, useRef, MouseEvent, useEffect, memo } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ interface ShadePickerGradientProps {
   onClose: () => void;
 }
 
-export function ShadePickerGradient({
+export const ShadePickerGradient = memo(function ShadePickerGradient({
   baseColor,
   colorName,
   onSelectShade,
@@ -265,4 +265,4 @@ export function ShadePickerGradient({
       </Card>
     </motion.div>
   );
-}
+});
