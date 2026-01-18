@@ -22,11 +22,18 @@ import { RelatedTools } from '@/components/tools/RelatedTools';
 interface GradientConfig {
   text: string;
   highlightWord: string;
+  highlightCaseInsensitive: boolean;
   color1: string;
   color2: string;
   color3?: string;
+  color1Position: number;
+  color2Position: number;
+  color3Position?: number;
+  gradientType: 'linear' | 'radial';
   direction: string;
   angle?: number;
+  radialShape?: 'circle' | 'ellipse';
+  radialPosition?: 'center' | 'top' | 'bottom' | 'left' | 'right';
   fontSize: number;
   fontFamily: string;
   animated: boolean;
@@ -70,13 +77,20 @@ const fonts = [
 ];
 
 const defaultConfig: GradientConfig = {
-  text: 'Build Faster Websites',
-  highlightWord: 'Faster',
+  text: 'Create Amazing Gradients',
+  highlightWord: 'Amazing',
+  highlightCaseInsensitive: true,
   color1: '#fb923c',
   color2: '#db2777',
   color3: '#f59e0b',
+  color1Position: 0,
+  color2Position: 100,
+  color3Position: 50,
+  gradientType: 'linear',
   direction: 'to right',
   angle: 90,
+  radialShape: 'circle',
+  radialPosition: 'center',
   fontSize: 48,
   fontFamily: 'system-ui',
   animated: false,
@@ -102,9 +116,18 @@ export default function GradientTextTool() {
     }
   }, []);
 
-  const gradientCSS = config.color3
-    ? `linear-gradient(${config.angle ? `${config.angle}deg` : config.direction}, ${config.color1}, ${config.color2}, ${config.color3})`
-    : `linear-gradient(${config.angle ? `${config.angle}deg` : config.direction}, ${config.color1}, ${config.color2})`;
+  // Generate gradient CSS with color positions and radial support
+  const generateGradientColors = () => {
+    if (config.color3) {
+      return `${config.color1} ${config.color1Position}%, ${config.color3} ${config.color3Position}%, ${config.color2} ${config.color2Position}%`;
+    }
+    return `${config.color1} ${config.color1Position}%, ${config.color2} ${config.color2Position}%`;
+  };
+
+  const gradientCSS = config.gradientType === 'radial'
+    ? `radial-gradient(${config.radialShape} at ${config.radialPosition}, ${generateGradientColors()})`
+    : `linear-gradient(${config.angle ? `${config.angle}deg` : config.direction}, ${generateGradientColors()})`;
+
   const twDir = directions.find(d => d.value === config.direction)?.tw || 'r';
   const elAngle = config.angle || directions.find(d => d.value === config.direction)?.el || 0;
 
@@ -158,37 +181,60 @@ export default function GradientTextTool() {
   ];
 
   const renderPreview = () => {
-    const { text, highlightWord } = config;
+    const { text, highlightWord, highlightCaseInsensitive } = config;
 
-    if (highlightWord && text.includes(highlightWord)) {
-      const parts = text.split(highlightWord);
-      return (
-        <span className="font-bold" style={{
-          fontSize: `${config.fontSize}px`,
-          fontFamily: config.fontFamily,
-          textShadow: config.textShadow ? '2px 2px 4px rgba(0,0,0,0.3)' : undefined,
-          WebkitTextStroke: config.strokeWidth > 0 ? `${config.strokeWidth}px rgba(255,255,255,0.3)` : undefined,
-        }}>
-          <span className={darkPreview ? 'text-white' : 'text-slate-900'}>{parts[0]}</span>
-          <motion.span
-            className={config.animated ? 'animate-gradient' : ''}
-            style={{
-              background: gradientCSS,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              backgroundSize: config.animated ? '200% 200%' : 'auto',
-            }}
-            key={`${config.color1}-${config.color2}-${config.color3}`}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {highlightWord}
-          </motion.span>
-          <span className={darkPreview ? 'text-white' : 'text-slate-900'}>{parts.slice(1).join(highlightWord)}</span>
-        </span>
-      );
+    if (highlightWord && text.length > 0) {
+      // Check if highlight word exists (case-sensitive or insensitive)
+      const testRegex = new RegExp(highlightWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), highlightCaseInsensitive ? 'i' : '');
+
+      if (testRegex.test(text)) {
+        // Split text using regex to preserve case
+        const splitRegex = new RegExp(`(${highlightWord.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, highlightCaseInsensitive ? 'gi' : 'g');
+        const parts = text.split(splitRegex);
+
+        return (
+          <span className="font-bold" style={{
+            fontSize: `${config.fontSize}px`,
+            fontFamily: config.fontFamily,
+            textShadow: config.textShadow ? '2px 2px 4px rgba(0,0,0,0.3)' : undefined,
+            WebkitTextStroke: config.strokeWidth > 0 ? `${config.strokeWidth}px rgba(255,255,255,0.3)` : undefined,
+          }}>
+            {parts.map((part, index) => {
+              // Check if this part matches the highlight word
+              const isHighlight = highlightCaseInsensitive
+                ? part.toLowerCase() === highlightWord.toLowerCase()
+                : part === highlightWord;
+
+              if (isHighlight) {
+                return (
+                  <motion.span
+                    key={index}
+                    className={config.animated ? 'animate-gradient' : ''}
+                    style={{
+                      background: gradientCSS,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      backgroundSize: config.animated ? '200% 200%' : 'auto',
+                    }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    {part}
+                  </motion.span>
+                );
+              }
+
+              return (
+                <span key={index} className={darkPreview ? 'text-white' : 'text-slate-900'}>
+                  {part}
+                </span>
+              );
+            })}
+          </span>
+        );
+      }
     }
 
     return (
@@ -390,6 +436,22 @@ export default function GradientTextTool() {
                 />
               </div>
 
+              {/* Case-insensitive toggle for highlight word */}
+              {config.highlightWord && (
+                <div className="flex items-center gap-2 -mt-1">
+                  <input
+                    id="case-insensitive-toggle"
+                    type="checkbox"
+                    checked={config.highlightCaseInsensitive}
+                    onChange={(e) => setConfig({ ...config, highlightCaseInsensitive: e.target.checked })}
+                    className="h-4 w-4 cursor-pointer rounded border-gray-300"
+                  />
+                  <Label htmlFor="case-insensitive-toggle" className="font-normal cursor-pointer text-sm text-muted-foreground">
+                    Case insensitive matching
+                  </Label>
+                </div>
+              )}
+
               {/* Presets */}
               <div className="space-y-2">
                 <Label>Color Presets</Label>
@@ -424,6 +486,21 @@ export default function GradientTextTool() {
                       className="font-mono text-xs"
                     />
                   </div>
+                  {/* Color 1 Position */}
+                  <div className="space-y-1">
+                    <div className="flex justify-between items-center">
+                      <Label className="text-xs text-muted-foreground">Position</Label>
+                      <span className="text-xs text-muted-foreground">{config.color1Position}%</span>
+                    </div>
+                    <Slider
+                      value={[config.color1Position]}
+                      onValueChange={([v]) => setConfig({ ...config, color1Position: v })}
+                      min={0}
+                      max={100}
+                      step={1}
+                      className="w-full"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <Label>Color 2</Label>
@@ -438,6 +515,21 @@ export default function GradientTextTool() {
                       value={config.color2}
                       onChange={(e) => setConfig({ ...config, color2: e.target.value })}
                       className="font-mono text-xs"
+                    />
+                  </div>
+                  {/* Color 2 Position */}
+                  <div className="space-y-1">
+                    <div className="flex justify-between items-center">
+                      <Label className="text-xs text-muted-foreground">Position</Label>
+                      <span className="text-xs text-muted-foreground">{config.color2Position}%</span>
+                    </div>
+                    <Slider
+                      value={[config.color2Position]}
+                      onValueChange={([v]) => setConfig({ ...config, color2Position: v })}
+                      min={0}
+                      max={100}
+                      step={1}
+                      className="w-full"
                     />
                   </div>
                 </div>
@@ -476,13 +568,31 @@ export default function GradientTextTool() {
                   <Button
                     variant="outline"
                     size="sm"
-                    onClick={() => setConfig({ ...config, color3: '#f59e0b' })}
+                    onClick={() => setConfig({ ...config, color3: '#f59e0b', color3Position: 50 })}
                     className="w-full"
                   >
                     + Add 3rd Color
                   </Button>
                 )}
               </div>
+
+              {/* Color 3 Position - only show when color3 exists */}
+              {config.color3 && (
+                <div className="space-y-1">
+                  <div className="flex justify-between items-center">
+                    <Label className="text-xs text-muted-foreground">Color 3 Position</Label>
+                    <span className="text-xs text-muted-foreground">{config.color3Position}%</span>
+                  </div>
+                  <Slider
+                    value={[config.color3Position || 50]}
+                    onValueChange={([v]) => setConfig({ ...config, color3Position: v })}
+                    min={0}
+                    max={100}
+                    step={1}
+                    className="w-full"
+                  />
+                </div>
+              )}
 
               {/* Font Family */}
               <div className="space-y-2">
@@ -499,44 +609,118 @@ export default function GradientTextTool() {
                 </Select>
               </div>
 
-              {/* Angle Slider */}
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <Label>Angle <span className="text-muted-foreground text-xs">(0-360°)</span></Label>
-                  <div className="flex items-center gap-2">
-                    <Input
-                      type="number"
-                      value={config.angle || 90}
-                      onChange={(e) => setConfig({ ...config, angle: Math.min(360, Math.max(0, parseInt(e.target.value) || 0)) })}
-                      className="w-16 h-6 text-xs text-right bg-background/50"
-                      min="0"
-                      max="360"
-                    />
-                    <span className="text-sm text-muted-foreground">°</span>
-                  </div>
+              {/* Gradient Type Selector */}
+              <div className="space-y-2 pt-3 border-t border-border">
+                <Label>Gradient Type</Label>
+                <div className="grid grid-cols-2 gap-2">
+                  <Button
+                    variant={config.gradientType === 'linear' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setConfig({ ...config, gradientType: 'linear' })}
+                    className="w-full"
+                  >
+                    Linear
+                  </Button>
+                  <Button
+                    variant={config.gradientType === 'radial' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setConfig({ ...config, gradientType: 'radial' })}
+                    className="w-full"
+                  >
+                    Radial
+                  </Button>
                 </div>
-                <Slider
-                  value={[config.angle || 90]}
-                  onValueChange={([v]) => setConfig({ ...config, angle: v })}
-                  min={0}
-                  max={360}
-                  step={15}
-                />
               </div>
 
-              <div className="space-y-2">
-                <Label>Direction</Label>
-                <Select value={config.direction} onValueChange={(v) => setConfig({ ...config, direction: v })}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {directions.map((d) => (
-                      <SelectItem key={d.value} value={d.value}>{d.label}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              {/* Linear Gradient Controls */}
+              {config.gradientType === 'linear' && (
+                <>
+                  {/* Angle Slider */}
+                  <div className="space-y-2">
+                    <div className="flex justify-between">
+                      <Label>Angle <span className="text-muted-foreground text-xs">(0-360°)</span></Label>
+                      <div className="flex items-center gap-2">
+                        <Input
+                          type="number"
+                          value={config.angle || 90}
+                          onChange={(e) => setConfig({ ...config, angle: Math.min(360, Math.max(0, parseInt(e.target.value) || 0)) })}
+                          className="w-16 h-6 text-xs text-right bg-background/50"
+                          min="0"
+                          max="360"
+                        />
+                        <span className="text-sm text-muted-foreground">°</span>
+                      </div>
+                    </div>
+                    <Slider
+                      value={[config.angle || 90]}
+                      onValueChange={([v]) => setConfig({ ...config, angle: v })}
+                      min={0}
+                      max={360}
+                      step={15}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Direction</Label>
+                    <Select value={config.direction} onValueChange={(v) => setConfig({ ...config, direction: v })}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {directions.map((d) => (
+                          <SelectItem key={d.value} value={d.value}>{d.label}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </>
+              )}
+
+              {/* Radial Gradient Controls */}
+              {config.gradientType === 'radial' && (
+                <>
+                  <div className="space-y-2">
+                    <Label>Shape</Label>
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button
+                        variant={config.radialShape === 'circle' ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setConfig({ ...config, radialShape: 'circle' })}
+                        className="w-full"
+                      >
+                        ● Circle
+                      </Button>
+                      <Button
+                        variant={config.radialShape === 'ellipse' ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => setConfig({ ...config, radialShape: 'ellipse' })}
+                        className="w-full"
+                      >
+                        ⬭ Ellipse
+                      </Button>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label>Position</Label>
+                    <Select
+                      value={config.radialPosition}
+                      onValueChange={(v) => setConfig({ ...config, radialPosition: v as typeof config.radialPosition })}
+                    >
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="center">Center</SelectItem>
+                        <SelectItem value="top">Top</SelectItem>
+                        <SelectItem value="bottom">Bottom</SelectItem>
+                        <SelectItem value="left">Left</SelectItem>
+                        <SelectItem value="right">Right</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </>
+              )}
 
               <div className="space-y-2">
                 <div className="flex justify-between">
