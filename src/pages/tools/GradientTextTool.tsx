@@ -520,7 +520,7 @@ export default function GradientTextTool() {
                       type="color"
                       value={config.color1}
                       onChange={(e) => setConfig({ ...config, color1: e.target.value })}
-                      className="w-12 h-10 p-1 cursor-pointer"
+                      className="w-12 h-12 p-1 cursor-pointer rounded-md overflow-hidden"
                     />
                     <Input
                       value={config.color1}
@@ -560,7 +560,7 @@ export default function GradientTextTool() {
                       type="color"
                       value={config.color2}
                       onChange={(e) => setConfig({ ...config, color2: e.target.value })}
-                      className="w-12 h-10 p-1 cursor-pointer"
+                      className="w-12 h-12 p-1 cursor-pointer rounded-md overflow-hidden"
                     />
                     <Input
                       value={config.color2}
@@ -616,7 +616,7 @@ export default function GradientTextTool() {
                       type="color"
                       value={config.color3}
                       onChange={(e) => setConfig({ ...config, color3: e.target.value })}
-                      className="w-12 h-10 p-1 cursor-pointer"
+                      className="w-12 h-12 p-1 cursor-pointer rounded-md overflow-hidden"
                     />
                     <Input
                       value={config.color3}
