@@ -12,7 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { RotateCcw, Shuffle, Sun, Moon } from 'lucide-react';
+import { RotateCcw, Shuffle, Sun, Moon, Copy } from 'lucide-react';
 import { useToolShortcuts } from '@/hooks/use-keyboard-shortcuts';
 import { usePresets } from '@/hooks/use-presets';
 import { useToast } from '@/hooks/use-toast';
@@ -143,6 +143,11 @@ export default function GradientTextTool() {
     setConfig(defaultConfig);
   }, []);
 
+  const copyColor = useCallback((color: string) => {
+    navigator.clipboard.writeText(color);
+    toast({ title: `Copied ${color}` });
+  }, [toast]);
+
   const copyCode = useCallback(() => {
     navigator.clipboard.writeText(tailwindCode);
     toast({ title: 'Tailwind code copied to clipboard' });
@@ -261,25 +266,62 @@ export default function GradientTextTool() {
     );
   };
 
+  // Enhanced CSS with custom properties, browser prefixes, and accessibility
   const cssCode = config.highlightWord && config.text.includes(config.highlightWord)
-    ? `/* CSS */
-            .gradient-word {
-              background: ${gradientCSS};
-            -webkit-background-clip: text;
-            color: transparent;
-            font-weight: bold;
+    ? `/* CSS Custom Properties (Design System Ready) */
+:root {
+  --gradient-text: ${gradientCSS};
 }
 
-            <!-- HTML -->
-            <h1>${config.text.replace(config.highlightWord, `<span class="gradient-word">${config.highlightWord}</span>`)}</h1>`
-    : `.gradient-text {
-              background: ${gradientCSS};
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: ${config.fontSize}px;
-            font-weight: 800;
-}`;
+/* Gradient Word Styles */
+.gradient-word {
+  background: var(--gradient-text);
+  background: -webkit-${gradientCSS};
+  background: -moz-${gradientCSS};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+  
+  /* Accessibility Fallback */
+  @supports not (-webkit-background-clip: text) {
+    color: ${config.color1};
+    background: none;
+  }
+}
+
+/* Usage Example */
+<h1>${config.text.replace(config.highlightWord, `<span class="gradient-word">${config.highlightWord}</span>`)}</h1>`
+    : `/* CSS Custom Properties (Design System Ready) */
+:root {
+  --gradient-text: ${gradientCSS};
+  --gradient-text-size: ${config.fontSize}px;
+}
+
+/* Gradient Text Styles */
+.gradient-text {
+  background: var(--gradient-text);
+  background: -webkit-${gradientCSS};
+  background: -moz-${gradientCSS};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: var(--gradient-text-size);
+  font-weight: 800;
+  
+  /* Accessibility Fallback */
+  @supports not (-webkit-background-clip: text) {
+    color: ${config.color1};
+    background: none;
+  }
+}
+
+/* Usage Example */
+<h1 class="gradient-text">${config.text}</h1>`;
 
   const tailwindCode = config.highlightWord && config.text.includes(config.highlightWord)
     ? `<h1 class="text-white font-bold text-[${config.fontSize}px]">
@@ -483,8 +525,17 @@ export default function GradientTextTool() {
                     <Input
                       value={config.color1}
                       onChange={(e) => setConfig({ ...config, color1: e.target.value })}
-                      className="font-mono text-xs"
+                      className="font-mono text-xs flex-1"
                     />
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => copyColor(config.color1)}
+                      className="h-10 px-2"
+                      title="Copy color"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
                   </div>
                   {/* Color 1 Position */}
                   <div className="space-y-1">
@@ -514,8 +565,17 @@ export default function GradientTextTool() {
                     <Input
                       value={config.color2}
                       onChange={(e) => setConfig({ ...config, color2: e.target.value })}
-                      className="font-mono text-xs"
+                      className="font-mono text-xs flex-1"
                     />
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => copyColor(config.color2)}
+                      className="h-10 px-2"
+                      title="Copy color"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
                   </div>
                   {/* Color 2 Position */}
                   <div className="space-y-1">
@@ -561,8 +621,17 @@ export default function GradientTextTool() {
                     <Input
                       value={config.color3}
                       onChange={(e) => setConfig({ ...config, color3: e.target.value })}
-                      className="font-mono text-xs"
+                      className="font-mono text-xs flex-1"
                     />
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => copyColor(config.color3!)}
+                      className="h-10 px-2"
+                      title="Copy color"
+                    >
+                      <Copy className="h-4 w-4" />
+                    </Button>
                   </div>
                 ) : (
                   <Button
