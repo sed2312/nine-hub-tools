@@ -529,7 +529,8 @@ export default function ToolsOverview() {
                         {allTools.map((tool) => (
                             <article
                                 key={tool.id}
-                                className="p-6 rounded-lg border border-border bg-card/30"
+                                id={tool.id}
+                                className="p-6 rounded-lg border border-border bg-card/30 scroll-mt-20"
                             >
                                 <div className="flex items-start gap-4 mb-4">
                                     <span className="text-4xl">{tool.icon}</span>
