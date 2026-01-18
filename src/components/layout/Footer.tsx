@@ -18,7 +18,7 @@ export function Footer() {
               <EmailCapture
                 source="Footer"
                 variant="footer"
-                placeholder="your@email.com"
+                placeholder="Enter your email"
                 buttonText="Subscribe"
               />
             </div>

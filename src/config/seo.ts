@@ -612,6 +612,63 @@ export const seoConfig: Record<string, PageSEO> = {
         }
     },
 
+    '/tools-overview': {
+        title: 'Web Design Tools Overview - 9 Free CSS Generators | Nine Hub Tools',
+        description: 'Complete guide to using 9 professional web design tools together. Free glassmorphism, gradient, shadow, and color palette generators for developers.',
+        keywords: [
+            'web design tools for developers',
+            'free CSS generators',
+            'design tool workflow',
+            'glassmorphism generator',
+            'gradient text generator',
+            'color palette tool',
+            'CSS shadow generator',
+            'web design system tools',
+            'modern web design tools',
+            'frontend development tools',
+            'UI design generators',
+            'responsive design tools',
+            'CSS code generator',
+            'design workflow optimization',
+            'web developer toolkit'
+        ],
+        canonical: 'https://nineproo.com/tools-overview',
+        ogImage: '/og-tools-overview.png',
+        schema: [
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Web Design Tools Overview - Complete Guide for Developers",
+                "description": "Comprehensive guide to using 9 professional web design tools together. Learn workflows, tool synergies, and best practices.",
+                "url": "https://nineproo.com/tools-overview",
+                "inLanguage": "en-US",
+                "isPartOf": {
+                    "@type": "WebSite",
+                    "name": "Nine Hub Tools",
+                    "url": "https://nineproo.com"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://nineproo.com"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Tools Overview",
+                        "item": "https://nineproo.com/tools-overview"
+                    }
+                ]
+            }
+        ]
+    },
+
     // Supporting pages
     '/about': {
         title: 'About Nine Hub Tools - Free Design Tools for Developers',

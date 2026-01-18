@@ -136,6 +136,18 @@ export function Navbar() {
             </li>
 
             <li>
+              <Link to="/tools-overview">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={location.pathname === '/tools-overview' ? 'bg-secondary' : ''}
+                >
+                  Tools Overview
+                </Button>
+              </Link>
+            </li>
+
+            <li>
               <Link to="/about">
                 <Button
                   variant="ghost"
@@ -210,6 +222,14 @@ export function Navbar() {
                     </li>
                   ))}
                 </ul>
+              </li>
+
+              <li>
+                <Link to="/tools-overview" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="ghost" className="w-full justify-start">
+                    Tools Overview
+                  </Button>
+                </Link>
               </li>
 
               <li>

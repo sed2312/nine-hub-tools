@@ -75,6 +75,7 @@ export default function Sitemap() {
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-4">Company</h2>
                     <ul className="space-y-2 ml-4">
+                        <li><Link to="/tools-overview" className="text-foreground hover:text-primary transition-colors">Tools Overview</Link></li>
                         <li><Link to="/about" className="text-foreground hover:text-primary transition-colors">About</Link></li>
                         <li><Link to="/contact" className="text-foreground hover:text-primary transition-colors">Contact</Link></li>
                     </ul>

@@ -29,6 +29,7 @@ const ContrastTool = lazy(() => import("./pages/tools/ContrastTool"));
 const MetaTool = lazy(() => import("./pages/tools/MetaTool"));
 
 // Lazy load info/legal pages (rarely visited)
+const ToolsOverview = lazy(() => import("./pages/ToolsOverview"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Sitemap = lazy(() => import("./pages/Sitemap"));
@@ -74,6 +75,7 @@ const App = () => (
                       <Route path="/blob" element={<BlobTool />} />
                       <Route path="/contrast" element={<ContrastTool />} />
                       <Route path="/meta" element={<MetaTool />} />
+                      <Route path="/tools-overview" element={<ToolsOverview />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/sitemap" element={<Sitemap />} />

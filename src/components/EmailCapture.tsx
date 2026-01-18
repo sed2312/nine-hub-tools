@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -20,14 +20,29 @@ interface EmailCaptureProps {
 export function EmailCapture({
     source = 'Website',
     variant = 'inline',
-    placeholder = 'your@email.com',
+    placeholder, // Will be set based on screen size
     buttonText = 'Get Early Access',
     successMessage = '🎉 You\'re on the list! We\'ll notify you when we launch Pro features.'
 }: EmailCaptureProps) {
     const [email, setEmail] = useState('');
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const { toast } = useToast();
+
+    // Detect mobile screen size
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 640); // sm breakpoint
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    // Set responsive placeholder
+    const responsivePlaceholder = placeholder || (isMobile ? 'Enter email' : 'your@email.com');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -118,7 +133,7 @@ export function EmailCapture({
             <form onSubmit={handleSubmit} className="flex gap-2 w-full max-w-sm">
                 <Input
                     type="email"
-                    placeholder={placeholder}
+                    placeholder={responsivePlaceholder}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -158,7 +173,7 @@ export function EmailCapture({
                 <div className="flex gap-2">
                     <Input
                         type="email"
-                        placeholder={placeholder}
+                        placeholder={responsivePlaceholder}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
@@ -183,7 +198,7 @@ export function EmailCapture({
         <form onSubmit={handleSubmit} className="flex gap-2 max-w-md w-full">
             <Input
                 type="email"
-                placeholder={placeholder}
+                placeholder={responsivePlaceholder}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
