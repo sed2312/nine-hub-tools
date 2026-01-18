@@ -172,8 +172,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/glass': {
-        title: 'Glassmorphism Generator – Create Frosted Glass UI Effects in CSS | NineProo',
-        description: 'Generate modern glassmorphism UI effects with our free CSS generator. Customize blur, transparency, borders, and shadows. Export CSS, Tailwind, or React code instantly.',
+        title: 'Glassmorphism CSS Generator | Nine Hub Tools',
+        description: 'Create frosted glass UI effects with live preview. Customize blur, transparency & shadows. Export CSS, Tailwind or React code. Free, no signup required.',
         keywords: ['glassmorphism generator', 'glassmorphism css', 'frosted glass ui', 'glass effect css'],
         canonical: 'https://nineproo.com/glass',
         ogImage: '/og-glass.png',
@@ -239,8 +239,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/gradient-text': {
-        title: 'CSS Gradient Text Generator – Animated Gradients | NineProo',
-        description: 'Create beautiful gradient text effects with CSS. Support for linear and radial gradients, custom colors, and animation. Export clean CSS or Tailwind code.',
+        title: 'Gradient Text Generator | Nine Hub Tools',
+        description: 'Create animated gradient text for headings & CTAs. Linear & radial gradients with custom colors. Export CSS, Tailwind or React. Free & instant.',
         keywords: ['gradient text generator', 'css text gradient', 'animated gradient text', 'text fill color'],
         canonical: 'https://nineproo.com/gradient-text',
         ogImage: '/og-gradient.png',
@@ -294,8 +294,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/shadow': {
-        title: 'Box Shadow Generator – Smooth CSS Shadows | NineProo',
-        description: 'Generate beautiful, layered box shadows for cards and UI elements. Customize layers, spread, blur, and color. Export CSS box-shadow code instantly.',
+        title: 'Box Shadow CSS Generator | Nine Hub Tools',
+        description: 'Design layered box shadows for cards & UI elements. Customize layers, spread, blur & color. Export perfect CSS shadows. Free with live preview.',
         keywords: ['box shadow generator', 'css shadow generator', 'smooth shadow', 'layered shadows'],
         canonical: 'https://nineproo.com/shadow',
         ogImage: '/og-shadow.png',
@@ -349,8 +349,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/palette': {
-        title: 'Color Palette Generator – Accessible Color Schemes | NineProo',
-        description: 'Create harmonious color schemes for web projects. Generate monochromatic, analogous, and complementary palettes. Check contrast accessibility.',
+        title: 'Color Palette Generator | Nine Hub Tools',
+        description: 'Generate harmonious color schemes with AI. Monochromatic, analogous & complementary palettes. Built-in contrast checker for accessibility. Free tool.',
         keywords: ['color palette generator', 'color scheme', 'web properties', 'accessible colors'],
         canonical: 'https://nineproo.com/palette',
         ogImage: '/og-palette.png',
@@ -404,8 +404,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/grid': {
-        title: 'CSS Grid Generator – Visual Layout Builder | NineProo',
-        description: 'Visually build complex CSS grid layouts. Customize columns, rows, and gaps without writing code. Export production-ready CSS grid code.',
+        title: 'CSS Grid Layout Generator | Nine Hub Tools',
+        description: 'Build responsive grid layouts visually. Define rows, columns, gaps & alignment. Auto-generated CSS code. Perfect for dashboards & complex designs.',
         keywords: ['css grid generator', 'grid layout', 'css grid builder', 'responsive grid'],
         canonical: 'https://nineproo.com/grid',
         ogImage: '/og-grid.png',
@@ -459,8 +459,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/blob': {
-        title: 'Blob SVG Generator – Create Organic SVG Shapes Online | NineProo',
-        description: 'Generate organic SVG blob shapes for modern web design. Customize shapes and export SVG instantly with NineProo\'s Blob SVG Generator.',
+        title: 'Blob SVG Shape Generator | Nine Hub Tools',
+        description: 'Generate organic blob shapes for modern designs. Customize complexity & smoothness. Export SVG or CSS. Perfect for backgrounds & decorative elements.',
         keywords: ['blob svg generator', 'svg blob', 'organic shapes svg', 'blob maker'],
         canonical: 'https://nineproo.com/blob',
         ogImage: '/og-blob.png',
@@ -481,8 +481,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/contrast': {
-        title: 'Contrast Checker – WCAG Accessibility Test | NineProo',
-        description: 'Check color contrast ratios for WCAG AA and AAA compliance. Ensure your website colors are accessible to all users. Real-time preview.',
+        title: 'WCAG Contrast Checker Tool | Nine Hub Tools',
+        description: 'Check color contrast for WCAG AA/AAA compliance. Test text & UI components. Real-time feedback with accessible color suggestions. Free accessibility tool.',
         keywords: ['contrast checker', 'accessibility checker', 'wcag compliance', 'color contrast'],
         canonical: 'https://nineproo.com/contrast',
         ogImage: '/og-contrast.png',
@@ -536,8 +536,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/meta': {
-        title: 'Meta Tag Generator – SEO Optimization | NineProo',
-        description: 'Generate SEO-optimized meta tags, OpenGraph tags, and Twitter cards. Preview how your site appears in search results and social media.',
+        title: 'SEO Meta Tag Generator | Nine Hub Tools',
+        description: 'Generate SEO-optimized meta tags with live preview. Create Open Graph, Twitter Cards & essential tags. Boost search rankings & social shares. Free tool.',
         keywords: ['meta tag generator', 'seo tools', 'opengraph generator', 'meta tags'],
         canonical: 'https://nineproo.com/meta',
         ogImage: '/og-meta.png',
@@ -591,8 +591,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/prompt': {
-        title: 'AI Prompt Helper – Generate Better AI Prompts Instantly | NineProo',
-        description: 'Create clear, effective prompts for AI tools like ChatGPT and Claude. Improve output quality using NineProo\'s free AI Prompt Helper.',
+        title: 'AI Prompt Optimizer | Nine Hub Tools',
+        description: 'Optimize prompts for ChatGPT, Claude & AI models. Get structure suggestions for better responses. Improve clarity & results. Free AI prompt helper.',
         keywords: ['ai prompt generator', 'prompt engineering', 'chatgpt prompts', 'ai helper'],
         canonical: 'https://nineproo.com/prompt',
         ogImage: '/og-prompt.png',
@@ -613,8 +613,8 @@ export const seoConfig: Record<string, PageSEO> = {
     },
 
     '/tools-overview': {
-        title: 'Web Design Tools Overview - 9 Free CSS Generators | Nine Hub Tools',
-        description: 'Complete guide to using 9 professional web design tools together. Free glassmorphism, gradient, shadow, and color palette generators for developers.',
+        title: '9 Free Web Design Tools Guide | Nine Hub Tools',
+        description: 'Master 9 professional CSS generators for glassmorphism, gradients, shadows & more. Free workflows, tool combos & best practices. No signup required.',
         keywords: [
             'web design tools for developers',
             'free CSS generators',
