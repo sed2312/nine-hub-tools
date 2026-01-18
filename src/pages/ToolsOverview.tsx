@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { ArrowRight, ExternalLink, Check } from 'lucide-react';
 import { workflows, synergies, faqs } from '@/data/overview-content';
 import {
@@ -241,6 +242,26 @@ const allTools = [
 ];
 
 export default function ToolsOverview() {
+    // Generate ItemList schema for tools directory
+    const generateItemListSchema = () => ({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Web Design Tools Collection",
+        "description": "Complete collection of 9 professional free web design tools for developers",
+        "numberOfItems": allTools.length,
+        "itemListElement": allTools.map((tool, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "SoftwareApplication",
+                "name": tool.name,
+                "description": tool.description,
+                "url": `https://nineproo.com${tool.path}`,
+                "applicationCategory": "DesignApplication"
+            }
+        }))
+    });
+
     // Generate all schema markup
     const schemas = combineSchemas(
         generateWebPageSchema({
@@ -273,7 +294,8 @@ export default function ToolsOverview() {
                 applicationCategory: 'DesignApplication',
                 features: tool.proTips
             })
-        )
+        ),
+        generateItemListSchema()
     );
 
     // Set page title and meta
@@ -283,6 +305,9 @@ export default function ToolsOverview() {
 
     return (
         <Layout>
+            {/* SEO Meta Tags */}
+            <SEOHead path="/tools-overview" />
+
             {/* Schema Markup */}
             <script
                 type="application/ld+json"
